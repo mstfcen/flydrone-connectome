@@ -1,0 +1,91 @@
+{
+  "modified_fly_params": {
+    "goal_gain": 0.8689334409263146,
+    "avoid_gain": 2.8319769602472613,
+    "ttc_gain": 0.9948274565418566,
+    "prox_gain": 0.882122706866736,
+    "brake_gain": 0.5566211196624757,
+    "memory": 0.7380503461915419
+  },
+  "tune_score": 116.85334902518034,
+  "summary": {
+    "classical_vfh": {
+      "sparse": {
+        "success_rate": 1.0,
+        "collision_rate": 0.0,
+        "mean_time_s": 16.362666666666666,
+        "mean_path_m": 49.31058069165669,
+        "mean_min_clearance_m": 0.7905414265084831,
+        "mean_decision_us": 56.80703328773175
+      },
+      "cluttered": {
+        "success_rate": 1.0,
+        "collision_rate": 0.0,
+        "mean_time_s": 20.208000000000002,
+        "mean_path_m": 49.65822519564519,
+        "mean_min_clearance_m": 0.07446526605543562,
+        "mean_decision_us": 57.58382554017399
+      },
+      "dense": {
+        "success_rate": 1.0,
+        "collision_rate": 0.0,
+        "mean_time_s": 22.711999999999996,
+        "mean_path_m": 50.16823192692829,
+        "mean_min_clearance_m": 0.04489785504782889,
+        "mean_decision_us": 57.680673078834396
+      }
+    },
+    "fly_connectome": {
+      "sparse": {
+        "success_rate": 0.6333333333333333,
+        "collision_rate": 0.0,
+        "mean_time_s": 35.949333333333335,
+        "mean_path_m": 108.35862536709796,
+        "mean_min_clearance_m": 2.358990579566546,
+        "mean_decision_us": 60.74170718772178
+      },
+      "cluttered": {
+        "success_rate": 0.8666666666666667,
+        "collision_rate": 0.0,
+        "mean_time_s": 36.50666666666667,
+        "mean_path_m": 94.78542957183274,
+        "mean_min_clearance_m": 1.0743962037648445,
+        "mean_decision_us": 60.587934434745335
+      },
+      "dense": {
+        "success_rate": 0.8,
+        "collision_rate": 0.03333333333333333,
+        "mean_time_s": 40.168000000000006,
+        "mean_path_m": 95.3670474728711,
+        "mean_min_clearance_m": 0.4891001503955724,
+        "mean_decision_us": 61.7062522304834
+      }
+    },
+    "modified_fly": {
+      "sparse": {
+        "success_rate": 0.7666666666666667,
+        "collision_rate": 0.0,
+        "mean_time_s": 26.791999999999998,
+        "mean_path_m": 95.76284642766696,
+        "mean_min_clearance_m": 2.993303300196596,
+        "mean_decision_us": 64.0488116425402
+      },
+      "cluttered": {
+        "success_rate": 0.9333333333333333,
+        "collision_rate": 0.03333333333333333,
+        "mean_time_s": 22.952,
+        "mean_path_m": 72.3914968680664,
+        "mean_min_clearance_m": 1.4084193482874727,
+        "mean_decision_us": 64.29353129554035
+      },
+      "dense": {
+        "success_rate": 1.0,
+        "collision_rate": 0.0,
+        "mean_time_s": 26.16533333333333,
+        "mean_path_m": 77.03744704867391,
+        "mean_min_clearance_m": 0.7875683103293808,
+        "mean_decision_us": 65.01637922006253
+      }
+    }
+  }
+}

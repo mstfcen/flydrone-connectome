@@ -1,0 +1,61 @@
+name: FlyDrone tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONWARNINGS: ignore::RuntimeWarning
+
+jobs:
+  smoke:
+    name: Smoke tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - run: pytest -q
+
+  benchmark:
+    name: Full benchmark + robustness
+    needs: smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Run held-out benchmark
+        working-directory: prototype/2d
+        run: python benchmark.py | tee benchmark.log
+      - name: Run noise/latency stress test
+        working-directory: prototype/2d
+        run: python stress_test.py | tee stress.log
+      - name: Publish benchmark tables to Actions summary
+        run: python scripts/render_action_summary.py >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: flydrone-benchmark-${{ github.run_number }}
+          path: |
+            prototype/2d/results.csv
+            prototype/2d/summary.json
+            prototype/2d/stress_summary.json
+            prototype/2d/success_rates.png
+            prototype/2d/demo_trajectories.png
+            prototype/2d/stress_success.png
+            prototype/2d/benchmark.log
+            prototype/2d/stress.log

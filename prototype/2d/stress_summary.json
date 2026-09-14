@@ -1,0 +1,70 @@
+{
+  "clean": {
+    "fly_connectome": {
+      "success_rate": 0.7666666666666667,
+      "collision_rate": 0.03333333333333333,
+      "mean_time_s": 38.97866666666666
+    },
+    "modified_fly": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 27.26933333333334
+    },
+    "classical_vfh": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 22.37866666666667
+    }
+  },
+  "sensor_noise": {
+    "fly_connectome": {
+      "success_rate": 0.9,
+      "collision_rate": 0.06666666666666667,
+      "mean_time_s": 36.52
+    },
+    "modified_fly": {
+      "success_rate": 0.8666666666666667,
+      "collision_rate": 0.03333333333333333,
+      "mean_time_s": 29.687999999999995
+    },
+    "classical_vfh": {
+      "success_rate": 0.4666666666666667,
+      "collision_rate": 0.5333333333333333,
+      "mean_time_s": 16.762666666666664
+    }
+  },
+  "delay_160ms": {
+    "fly_connectome": {
+      "success_rate": 0.6666666666666666,
+      "collision_rate": 0.1,
+      "mean_time_s": 41.39733333333333
+    },
+    "modified_fly": {
+      "success_rate": 0.9,
+      "collision_rate": 0.06666666666666667,
+      "mean_time_s": 27.560000000000002
+    },
+    "classical_vfh": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 21.11199999999999
+    }
+  },
+  "combined": {
+    "fly_connectome": {
+      "success_rate": 0.8666666666666667,
+      "collision_rate": 0.03333333333333333,
+      "mean_time_s": 37.416000000000004
+    },
+    "modified_fly": {
+      "success_rate": 0.9333333333333333,
+      "collision_rate": 0.03333333333333333,
+      "mean_time_s": 33.73066666666667
+    },
+    "classical_vfh": {
+      "success_rate": 0.5,
+      "collision_rate": 0.5,
+      "mean_time_s": 16.66133333333333
+    }
+  }
+}
