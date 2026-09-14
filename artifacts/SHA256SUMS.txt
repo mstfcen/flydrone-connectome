@@ -1,0 +1,1 @@
+3c63511f37bee3b82b52f6bea64afe7446dc41baf316ce2e1e8536897a15c4fb  artifacts/flydrone_snapshot_2026-09-15.zip

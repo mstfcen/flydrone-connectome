@@ -1,0 +1,13 @@
+profile,controller,success_rate,collision_rate,mean_time_s
+clean,fly_connectome,0.7666666667,0.0333333333,38.9786666667
+clean,modified_fly,1.0,0.0,27.2693333333
+clean,classical_vfh,1.0,0.0,22.3786666667
+sensor_noise,fly_connectome,0.9,0.0666666667,36.52
+sensor_noise,modified_fly,0.8666666667,0.0333333333,29.688
+sensor_noise,classical_vfh,0.4666666667,0.5333333333,16.7626666667
+delay_160ms,fly_connectome,0.6666666667,0.1,41.3973333333
+delay_160ms,modified_fly,0.9,0.0666666667,27.56
+delay_160ms,classical_vfh,1.0,0.0,21.112
+combined,fly_connectome,0.8666666667,0.0333333333,37.416
+combined,modified_fly,0.9333333333,0.0333333333,33.7306666667
+combined,classical_vfh,0.5,0.5,16.6613333333
