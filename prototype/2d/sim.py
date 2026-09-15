@@ -72,11 +72,16 @@ def raycast(state, world):
         best = np.minimum(best, np.min(roots, axis=1))
     eps = 1e-9
     dx, dy = dirs[:, 0], dirs[:, 1]
+    def wall_distance(numerator, denominator, mask):
+        out = np.full_like(denominator, np.inf, dtype=float)
+        np.divide(numerator, denominator, out=out, where=mask)
+        return out
+
     wall_ts = []
-    wall_ts.append(np.where(dx > eps, (world.width - DRONE_RADIUS - p[0]) / dx, np.inf))
-    wall_ts.append(np.where(dx < -eps, (DRONE_RADIUS - p[0]) / dx, np.inf))
-    wall_ts.append(np.where(dy > eps, (world.height - DRONE_RADIUS - p[1]) / dy, np.inf))
-    wall_ts.append(np.where(dy < -eps, (DRONE_RADIUS - p[1]) / dy, np.inf))
+    wall_ts.append(wall_distance(world.width - DRONE_RADIUS - p[0], dx, dx > eps))
+    wall_ts.append(wall_distance(DRONE_RADIUS - p[0], dx, dx < -eps))
+    wall_ts.append(wall_distance(world.height - DRONE_RADIUS - p[1], dy, dy > eps))
+    wall_ts.append(wall_distance(DRONE_RADIUS - p[1], dy, dy < -eps))
     best = np.minimum(best, np.min(np.vstack(wall_ts), axis=0))
     return np.clip(best, 0.0, MAX_RANGE), RAY_ANGLES.copy()
 

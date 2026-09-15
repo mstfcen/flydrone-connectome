@@ -1,20 +1,14 @@
-name: Final PX4 Gazebo Avoidance Experiment
+name: Experimental PX4 Closed-Loop Avoidance (WIP)
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - "phase4/final_experiment.py"
-      - "phase4/lidar/obstacle_wall.sdf"
-      - ".github/workflows/phase4_final.yml"
 
 permissions:
   contents: read
 
 jobs:
   flight:
-    name: ${{ matrix.controller }} / PX4 wall trial
+    name: ${{ matrix.controller }} / experimental wall trial
     runs-on: ubuntu-latest
     timeout-minutes: 20
     strategy:
@@ -39,7 +33,6 @@ jobs:
             -v "$GITHUB_WORKSPACE/phase4:/flydrone:ro" \
             px4io/px4-sitl-gazebo:latest
           sleep 8
-
       - name: Spawn physical wall
         run: |
           docker exec flydrone-final bash -lc \
@@ -50,7 +43,7 @@ jobs:
               --req '\''sdf_filename: "/flydrone/lidar/obstacle_wall.sdf", name: "flydrone_wall"'\'''
           sleep 2
 
-      - name: Fly experiment
+      - name: Fly experimental mission
         run: |
           mkdir -p phase4/final_results
           timeout 240s python -u phase4/final_experiment.py \
@@ -58,19 +51,31 @@ jobs:
             --trial 0 --seed 4100 \
             --out "phase4/final_results/${{ matrix.controller }}_trial0.json" \
             | tee "phase4/final_results/${{ matrix.controller }}_trial0.log"
-      - name: Collect logs
+
+      - name: Assert experiment success
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          name = "${{ matrix.controller }}"
+          p = Path(f"phase4/final_results/{name}_trial0.json")
+          result = json.loads(p.read_text())
+          if not result.get("success", False):
+              raise SystemExit(f"Experimental mission not validated: {result.get('reason')}")
+          print("EXPERIMENT_VALIDATED", name)
+          PY
+      - name: Collect logs and publish diagnostic summary
         if: always()
         run: |
           mkdir -p phase4/final_results
           docker logs flydrone-final \
             > "phase4/final_results/${{ matrix.controller }}_container.log" 2>&1 || true
           docker stop flydrone-final || true
-
-      - name: Publish summary
-        if: always()
-        run: |
-          echo "## PX4/Gazebo wall trial — ${{ matrix.controller }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "## Experimental PX4 wall trial — ${{ matrix.controller }}" \
+            >> "$GITHUB_STEP_SUMMARY"
           echo '' >> "$GITHUB_STEP_SUMMARY"
+          echo 'This workflow is WIP; a green job requires `success: true`.' \
+            >> "$GITHUB_STEP_SUMMARY"
           echo '```json' >> "$GITHUB_STEP_SUMMARY"
           cat "phase4/final_results/${{ matrix.controller }}_trial0.json" \
             | python -c 'import json,sys; d=json.load(sys.stdin); d.pop("trajectory",None); print(json.dumps(d,indent=2))' \
@@ -80,6 +85,6 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: final-${{ matrix.controller }}-${{ github.run_number }}
+          name: experimental-${{ matrix.controller }}-${{ github.run_number }}
           path: phase4/final_results/
           if-no-files-found: warn

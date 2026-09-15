@@ -1,9 +1,13 @@
 # Upstream data
 
-Raw FlyWire FAFB v783 tables are not committed because they are upstream source data rather than generated project output. Zaku currently has:
+Raw FlyWire FAFB v783 tables are intentionally not committed because they are upstream source data rather than project-generated outputs.
 
-- `classification.csv.gz` — 934,402 bytes
-- `consolidated_cell_types.csv.gz` — 901,707 bytes
-- `connections.csv.gz` — 50,289,304 bytes
+The extractor expects the following files under `data/fafb783/`:
 
-The reproducible extractor consumes those files from `data/fafb783/`.
+- `classification.csv.gz`
+- `consolidated_cell_types.csv.gz`
+- `connections.csv.gz`
+
+`extract_fafb_circuit.py` converts those upstream tables into the compact, checked-in circuit and report under `out/`.
+
+The repository therefore keeps the reproducible extraction logic and derived research artifact while avoiding redistribution of the complete upstream dataset.

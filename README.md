@@ -1,84 +1,127 @@
-# FlyDrone Connectome Prototype
+# FlyDrone
 
-[![FlyDrone tests](https://github.com/mstfcen/flydrone-connectome/actions/workflows/tests.yml/badge.svg)](https://github.com/mstfcen/flydrone-connectome/actions/workflows/tests.yml)
+### Connectome-Inspired Reactive Obstacle Avoidance for Micro-UAVs
 
-Bio-inspired UAV obstacle-avoidance research prototype comparing a fly-like looming reflex, a modified temporal-memory fly controller, and a classical VFH-style controller. The project has now begun replacing the hand-designed biological abstraction with a real FlyWire FAFB v783 subgraph.
+[![Core CI](https://github.com/mstfcen/flydrone-connectome/actions/workflows/tests.yml/badge.svg)](https://github.com/mstfcen/flydrone-connectome/actions/workflows/tests.yml)
+[![PX4 SITL](https://github.com/mstfcen/flydrone-connectome/actions/workflows/phase4_px4.yml/badge.svg)](https://github.com/mstfcen/flydrone-connectome/actions/workflows/phase4_px4.yml)
+[![Lidar Discovery](https://github.com/mstfcen/flydrone-connectome/actions/workflows/phase4_lidar.yml/badge.svg)](https://github.com/mstfcen/flydrone-connectome/actions/workflows/phase4_lidar.yml)
 
-## Current 2D results
+FlyDrone is a research prototype investigating whether compact **Drosophila-inspired visuomotor motifs**, informed by the FlyWire connectome, can provide robust reactive obstacle avoidance for micro-UAVs.
 
-Nominal held-out benchmark: 90 maps total (30 sparse, 30 cluttered, 30 dense). Overall success was ~76.7% for the fly-reflex controller, 90.0% for modified-fly, and 100% for classical VFH. In dense scenes modified-fly reached 30/30.
+The project deliberately progresses through increasingly realistic validation layers: deterministic 2D arenas, idealized 3D motion, a four-motor 6-DoF rigid-body quadcopter, and finally an external **PX4 + Gazebo SITL** boundary.
 
-Robustness test (dense maps, 30 runs/profile): with range noise + 3% ray dropout, success was 90.0% fly-reflex, 86.7% modified-fly, 46.7% VFH. With noise/dropout + 160 ms control delay, success was 86.7%, 93.3%, and 50.0% respectively.
+> **Research question:** can a small temporal threat-estimation controller retain useful avoidance behavior when sensing is noisy, control is delayed, and the vehicle is disturbed by wind?
 
-These are prototype simulation results, not evidence that a biological controller is generally superior. The noise result is hypothesis-generating and needs larger reruns and stronger baselines.
+![6-DoF robustness benchmark](prototype/3d/stress_success_6dof.png)
 
-### Original Canavar figures
+## Headline result
 
-![Same-course controller trajectories](prototype/2d/demo_trajectories.png)
+In the current 6-DoF dense-scene stress suite (10 held-out runs per profile), the modified fly-inspired controller retained 100% success across all tested perturbations.
+| Stress profile | Modified fly | Bilateral FlyWire | Classical VFH |
+|---|---:|---:|---:|
+| Clean | **100%** | 100% | 100% |
+| Sensor noise + dropout | **100%** | 100% | 90% |
+| 160 ms command latency | **100%** | 100% | 100% |
+| Gusty wind | **100%** | 70% | 70% |
+| Combined | **100%** | 90% | 60% |
 
-![Held-out success rates](prototype/2d/success_rates.png)
+These results are **simulation evidence, not a claim of general biological superiority**. The sample sizes are intentionally modest, the environments are synthetic, and the bilateral FlyWire controller includes an explicit engineering intervention. See [Limitations](docs/LIMITATIONS.md).
 
-![Noise and latency robustness](prototype/2d/stress_success.png)
+## What is connectome-derived?
 
-## Phase 2 — 3D
+A compact circuit is extracted reproducibly from **FlyWire FAFB v783** around looming-sensitive visual pathways and the DNp03 descending-neuron target:
 
-The new [`prototype/3d/`](prototype/3d/) benchmark uses 3D position/velocity, acceleration limits and a 105-ray retina (21 azimuth x 5 elevation). It is an inertial micro-UAV model, not yet full rigid-body motor/propeller physics.
+- 104 LC4 neurons
+- 210 LPLC2 neurons
+- 2 DNp03 neurons
+- 317 direct LC4/LPLC2 → DNp03 synapses across 37 directed edges
+- 61 two-hop intermediate neurons
+- 377 selected neurons and 1,117 selected edges in the exported circuit
 
-First 3D held-out result (16 maps/difficulty): modified-fly scored 87.5/100/100%, raw FlyWire 0/0/0%, bilateralized FlyWire 100/100/100%, and classical VFH 100/93.8/100% on sparse/cluttered/dense maps. Raw and bilateralized FlyWire are kept separate because the FAFB DNp03 subgraph is strongly asymmetric.
+The raw graph and the engineered bilateral variant are kept separate throughout the benchmark.
+## System overview
 
-![3D held-out success](prototype/3d/success_rates_3d.png)
+```mermaid
+flowchart LR
+    FW[FlyWire FAFB v783] --> EX[Subgraph extraction]
+    EX --> RAW[Raw FlyWire policy]
+    EX --> BI[Engineered bilateral policy]
+    S[Range / looming input] --> MF[Modified fly policy]
+    S --> VFH[Classical VFH baseline]
+    RAW --> EVAL[Controller evaluation]
+    BI --> EVAL
+    MF --> EVAL
+    VFH --> EVAL
+    EVAL --> D2[2D]
+    D2 --> D3[3D]
+    D3 --> RB[6-DoF rigid body]
+    RB --> PX4[PX4 + Gazebo SITL]
+```
 
-![3D trajectories](prototype/3d/demo_trajectories_3d.png)
+The low-level vehicle dynamics are shared between policies so the staged comparisons isolate the avoidance layer as much as possible. Architecture details are documented in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
-![3D robustness](prototype/3d/stress_success_3d.png)
+## Validation ladder
 
-## Phase 3 — 6-DoF rigid-body quadcopter
+| Layer | Status | What is validated |
+|---|---|---|
+| 2D arena | ✅ | Held-out nominal + noise/latency benchmarks |
+| Idealized 3D | ✅ | 105-ray body-mounted retina, 3D avoidance |
+| 6-DoF quadcopter | ✅ | Four motors, attitude/rates, drag, motor lag, wind |
+| PX4/Gazebo flight boundary | ✅ | Connect, arm, take off, telemetry, land |
+| Gazebo `x500_lidar_2d` | ✅ | Live 1080-ray scan, ~270° FOV, 0.1–30 m |
+| Runtime obstacle spawn | ✅ | Physical wall inserted into Gazebo world |
+| MAVLink obstacle bridge | ⚠️ | No automatic `OBSTACLE_DISTANCE` stream observed |
+| Closed-loop PX4 avoidance | 🚧 | Experimental; current offboard integration is not validated |
+## Controllers under test
 
-Phase 3 keeps the same 3D worlds and 105-ray body-mounted retina, but replaces the idealized velocity dynamics with a four-motor X-quad rigid-body model: gravity, roll/pitch/yaw attitude and body rates, inertia, thrust mixing, first-order motor lag, aerodynamic drag, motor saturation, and deterministic wind/gust profiles.
+**Modified fly** — a compact looming/proximity controller with time-to-collision estimation, temporal memory, braking and directional escape selection.
 
-Nominal held-out result (12 maps/difficulty): heuristic fly 100/100/100%, modified-fly 100/100/91.7%, raw FlyWire 0/0/0%, bilateralized FlyWire 100/91.7/100%, and classical VFH 100/91.7/91.7% on sparse/cluttered/dense maps.
+**Raw FlyWire** — a controller driven directly by the extracted FAFB connectivity. It is intentionally retained even though it fails the current 3D/6-DoF tasks; this is an important negative result.
 
-The dense stress suite adds sensor noise/dropout, 160 ms high-level command latency, gusty wind, and a combined condition. Modified-fly scored 100% in every Phase-3 stress profile; bilateralized FlyWire scored 100/100/100/70/90%, while classical VFH scored 100/90/100/70/60%.
+**Bilateral FlyWire** — an explicit engineering variant that mirrors the well-connected hemisphere to provide a balanced left/right action pathway. It must not be interpreted as an untouched biological reconstruction.
 
-![6-DoF held-out success](prototype/3d/success_rates_6dof.png)
+**Classical VFH** — a vector-field-histogram-style reactive baseline optimized for goal alignment and obstacle clearance.
 
-![6-DoF trajectories](prototype/3d/demo_trajectories_6dof.png)
+## Staged results
 
-![6-DoF robustness](prototype/3d/stress_success_6dof.png)
+The progression matters more than any single percentage. A policy that looks strong in a simple geometric arena may fail after vehicle dynamics, latency or disturbances are introduced.
 
-These are still simulation results rather than PX4/Gazebo hardware-in-the-loop validation. The low-level attitude/velocity controller is shared across all high-level avoidance policies so the comparison isolates the avoidance layer as much as possible.
+![6-DoF controller trajectories](prototype/3d/demo_trajectories_6dof.png)
 
-## Tests and reproducibility
+![6-DoF nominal benchmark](prototype/3d/success_rates_6dof.png)
 
-The original Canavar source, raw episode table and figures now live in [`prototype/2d/`](prototype/2d/). The checked-in outputs were transferred directly from Canavar rather than reconstructed from summaries.
+Detailed 2D, 3D and 6-DoF protocols and tables are in [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md). Raw episode tables and JSON summaries remain committed alongside the benchmark code.
+## Reproduce the simulation benchmarks
 
-GitHub Actions runs four visible validation layers on every push/PR:
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+pytest -q
+python prototype/3d/benchmark6dof.py
+python prototype/3d/stress6dof.py
+```
 
-1. **Smoke tests** — deterministic world generation, retina/controller contracts, hover equilibrium, and known success cases.
-2. **2D full benchmark + robustness** — reruns the original Canavar benchmark and uploads CSV/JSON/PNG/log artifacts.
-3. **Phase-2 3D benchmark + robustness** — reruns the idealized 3D nominal and stress suites.
-4. **Phase-3 6-DoF benchmark + robustness** — reruns motor/attitude rigid-body nominal and stress suites, including gusty wind.
+GitHub Actions independently reruns the staged simulation suite on Ubuntu/Python 3.12. PX4/Gazebo boundary checks use the official `px4io/px4-sitl-gazebo` container.
 
-Open the **Actions** tab or click the badge above to inspect each run.
+## Repository layout
 
-## Real connectome extraction
+```text
+extract_fafb_circuit.py   reproducible connectome subgraph extraction
+out/                      compact extracted circuit + report
+prototype/2d/             2D baseline and robustness experiments
+prototype/3d/             3D + 6-DoF simulations and results
+phase4/                   PX4/Gazebo SITL boundary experiments
+tests/                    deterministic regression/smoke tests
+docs/                     architecture, experiments and limitations
+.github/workflows/         reproducible CI and SITL diagnostics
+```
 
-The Zaku mirror contains a compact circuit extracted from FlyWire FAFB v783: 104 LC4, 210 LPLC2 and 2 DNp03 neurons. In this snapshot the extraction found 317 direct LC4/LPLC2-to-DNp03 synapses over 37 directed edges, plus 61 two-hop intermediates. The exported compact circuit contains 377 selected neurons and 1,117 selected edges.
+## Documentation
 
-See `out/fafb_loom_dnp03_circuit.json` and `out/fafb_loom_dnp03_report.json`.
+- [Architecture](docs/ARCHITECTURE.md)
+- [Experiment design and results](docs/EXPERIMENTS.md)
+- [Limitations and open questions](docs/LIMITATIONS.md)
+- [PX4/Gazebo integration status](phase4/README.md)
 
-## Repository map
-
-- `prototype/2d/` — original Canavar simulation source, episode-level results and figures
-- `prototype/3d/` — Phase 2 3D micro-UAV simulation, five controllers and 3D figures
-- `tests/` — fast CI smoke tests
-- `.github/workflows/tests.yml` — visible GitHub Actions benchmark pipeline
-- `extract_fafb_circuit.py` — reproducible FAFB subgraph extraction
-- `out/` — compact real-connectome circuit + report
-- `reports/` — compact result summaries and figures
-- `artifacts/` — portable research snapshot
-- `data/README.md` — upstream dataset notes; raw FAFB downloads are intentionally excluded from Git
-
-## Provenance
-
-The original 2D benchmark was run on Canavar and has now been transferred intact into the repository. The real FAFB circuit extraction was performed on Zaku from the downloaded v783 tables. CI reruns the simulator independently on GitHub-hosted Ubuntu/Python 3.12 so results can be compared against the original Canavar run.
+FlyDrone is intentionally scoped as a compact research prototype. The next meaningful milestone is a validated closed-loop PX4/Gazebo obstacle-avoidance trial, followed by hardware-in-the-loop or controlled real-vehicle testing.

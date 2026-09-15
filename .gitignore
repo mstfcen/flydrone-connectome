@@ -2,3 +2,5 @@
 __pycache__/
 data/fafb783/*.csv.gz
 *.pyc
+
+artifacts/
