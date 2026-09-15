@@ -1,0 +1,110 @@
+{
+  "clean": {
+    "fly_heuristic_3d": {
+      "success_rate": 0.4375,
+      "collision_rate": 0.0,
+      "mean_time_s": 49.46
+    },
+    "modified_fly_3d": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 21.259999999999998
+    },
+    "flywire_graph_3d": {
+      "success_rate": 0.0,
+      "collision_rate": 1.0,
+      "mean_time_s": 12.785
+    },
+    "flywire_bilateral_3d": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 19.075000000000003
+    },
+    "classical_vfh_3d": {
+      "success_rate": 0.8125,
+      "collision_rate": 0.1875,
+      "mean_time_s": 15.625
+    }
+  },
+  "sensor_noise": {
+    "fly_heuristic_3d": {
+      "success_rate": 0.4375,
+      "collision_rate": 0.0,
+      "mean_time_s": 60.115
+    },
+    "modified_fly_3d": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 21.135
+    },
+    "flywire_graph_3d": {
+      "success_rate": 0.0,
+      "collision_rate": 1.0,
+      "mean_time_s": 11.09
+    },
+    "flywire_bilateral_3d": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 20.025000000000002
+    },
+    "classical_vfh_3d": {
+      "success_rate": 0.8125,
+      "collision_rate": 0.1875,
+      "mean_time_s": 15.11
+    }
+  },
+  "delay_160ms": {
+    "fly_heuristic_3d": {
+      "success_rate": 0.625,
+      "collision_rate": 0.0,
+      "mean_time_s": 45.550000000000004
+    },
+    "modified_fly_3d": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 23.75
+    },
+    "flywire_graph_3d": {
+      "success_rate": 0.0,
+      "collision_rate": 1.0,
+      "mean_time_s": 12.54
+    },
+    "flywire_bilateral_3d": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 18.509999999999998
+    },
+    "classical_vfh_3d": {
+      "success_rate": 0.9375,
+      "collision_rate": 0.0625,
+      "mean_time_s": 15.885
+    }
+  },
+  "combined": {
+    "fly_heuristic_3d": {
+      "success_rate": 0.5625,
+      "collision_rate": 0.0,
+      "mean_time_s": 54.089999999999996
+    },
+    "modified_fly_3d": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 21.77
+    },
+    "flywire_graph_3d": {
+      "success_rate": 0.0,
+      "collision_rate": 1.0,
+      "mean_time_s": 10.935000000000002
+    },
+    "flywire_bilateral_3d": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 20.91
+    },
+    "classical_vfh_3d": {
+      "success_rate": 0.875,
+      "collision_rate": 0.125,
+      "mean_time_s": 15.25
+    }
+  }
+}

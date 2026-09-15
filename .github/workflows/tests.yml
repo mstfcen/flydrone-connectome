@@ -59,3 +59,38 @@ jobs:
             prototype/2d/stress_success.png
             prototype/2d/benchmark.log
             prototype/2d/stress.log
+
+
+  benchmark3d:
+    name: Phase 2 — 3D benchmark + robustness
+    needs: smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Run 3D held-out benchmark
+        working-directory: prototype/3d
+        run: python benchmark3d.py | tee benchmark3d.log
+      - name: Run 3D noise/latency stress test
+        working-directory: prototype/3d
+        run: python stress3d.py | tee stress3d.log
+      - name: Publish 3D tables to Actions summary
+        run: python scripts/render_3d_summary.py >> "$GITHUB_STEP_SUMMARY"      - uses: actions/upload-artifact@v4
+        with:
+          name: flydrone-3d-${{ github.run_number }}
+          path: |
+            prototype/3d/results3d.csv
+            prototype/3d/summary3d.json
+            prototype/3d/stress_summary3d.json
+            prototype/3d/success_rates_3d.png
+            prototype/3d/demo_trajectories_3d.png
+            prototype/3d/stress_success_3d.png
+            prototype/3d/benchmark3d.log
+            prototype/3d/stress3d.log

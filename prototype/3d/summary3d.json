@@ -1,0 +1,132 @@
+{
+  "fly_heuristic_3d": {
+    "sparse": {
+      "success_rate": 0.6875,
+      "collision_rate": 0.0,
+      "mean_time_s": 34.255,
+      "mean_path_m": 133.0514830681623,
+      "mean_min_range_m": 2.4370084788464936,
+      "mean_decision_us": 86.84035363711959
+    },
+    "cluttered": {
+      "success_rate": 0.8125,
+      "collision_rate": 0.0,
+      "mean_time_s": 31.775,
+      "mean_path_m": 117.70649546516273,
+      "mean_min_range_m": 1.8485445192491143,
+      "mean_decision_us": 81.18133088341852
+    },
+    "dense": {
+      "success_rate": 0.5,
+      "collision_rate": 0.0,
+      "mean_time_s": 47.29,
+      "mean_path_m": 166.8488750689126,
+      "mean_min_range_m": 1.3462788445599307,
+      "mean_decision_us": 82.9805011288903
+    }
+  },
+  "modified_fly_3d": {
+    "sparse": {
+      "success_rate": 0.875,
+      "collision_rate": 0.0,
+      "mean_time_s": 27.839999999999996,
+      "mean_path_m": 118.28825490798232,
+      "mean_min_range_m": 3.602364368967976,
+      "mean_decision_us": 103.51592441979982
+    },
+    "cluttered": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 21.29,
+      "mean_path_m": 88.41596715916398,
+      "mean_min_range_m": 3.0079612563941764,
+      "mean_decision_us": 99.90739980309678
+    },
+    "dense": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 21.685000000000002,
+      "mean_path_m": 84.06619628783378,
+      "mean_min_range_m": 1.8924792710465326,
+      "mean_decision_us": 99.59973016605836
+    }
+  },
+  "flywire_graph_3d": {
+    "sparse": {
+      "success_rate": 0.0,
+      "collision_rate": 1.0,
+      "mean_time_s": 19.005000000000003,
+      "mean_path_m": 68.17039966223157,
+      "mean_min_range_m": 0.02101924658896595,
+      "mean_decision_us": 235.27821872481138
+    },
+    "cluttered": {
+      "success_rate": 0.0,
+      "collision_rate": 1.0,
+      "mean_time_s": 16.465,
+      "mean_path_m": 53.553430805658934,
+      "mean_min_range_m": 0.031114496810774165,
+      "mean_decision_us": 239.54061301068896
+    },
+    "dense": {
+      "success_rate": 0.0,
+      "collision_rate": 1.0,
+      "mean_time_s": 11.965,
+      "mean_path_m": 31.26337048500637,
+      "mean_min_range_m": 0.020975814501176464,
+      "mean_decision_us": 241.9841895173481
+    }
+  },
+  "flywire_bilateral_3d": {
+    "sparse": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 16.275000000000002,
+      "mean_path_m": 68.50847393966943,
+      "mean_min_range_m": 3.2892788739712198,
+      "mean_decision_us": 347.58960432029954
+    },
+    "cluttered": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 17.66,
+      "mean_path_m": 71.80746399302178,
+      "mean_min_range_m": 2.707219710629198,
+      "mean_decision_us": 347.5895788376613
+    },
+    "dense": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 19.805,
+      "mean_path_m": 75.51274131371136,
+      "mean_min_range_m": 2.1344140296143443,
+      "mean_decision_us": 350.2890304843232
+    }
+  },
+  "classical_vfh_3d": {
+    "sparse": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 14.225000000000001,
+      "mean_path_m": 59.436504317143786,
+      "mean_min_range_m": 1.1790032872042986,
+      "mean_decision_us": 70.79619981154666
+    },
+    "cluttered": {
+      "success_rate": 0.9375,
+      "collision_rate": 0.0625,
+      "mean_time_s": 15.57,
+      "mean_path_m": 58.27527548024209,
+      "mean_min_range_m": 0.4877575573101113,
+      "mean_decision_us": 72.83000601807346
+    },
+    "dense": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 18.15,
+      "mean_path_m": 59.58089799712097,
+      "mean_min_range_m": 0.14992128442880132,
+      "mean_decision_us": 73.83884644663169
+    }
+  }
+}

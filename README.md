@@ -20,14 +20,27 @@ These are prototype simulation results, not evidence that a biological controlle
 
 ![Noise and latency robustness](prototype/2d/stress_success.png)
 
+## Phase 2 — 3D
+
+The new [`prototype/3d/`](prototype/3d/) benchmark uses 3D position/velocity, acceleration limits and a 105-ray retina (21 azimuth x 5 elevation). It is an inertial micro-UAV model, not yet full rigid-body motor/propeller physics.
+
+First 3D held-out result (16 maps/difficulty): modified-fly scored 87.5/100/100%, raw FlyWire 0/0/0%, bilateralized FlyWire 100/100/100%, and classical VFH 100/93.8/100% on sparse/cluttered/dense maps. Raw and bilateralized FlyWire are kept separate because the FAFB DNp03 subgraph is strongly asymmetric.
+
+![3D held-out success](prototype/3d/success_rates_3d.png)
+
+![3D trajectories](prototype/3d/demo_trajectories_3d.png)
+
+![3D robustness](prototype/3d/stress_success_3d.png)
+
 ## Tests and reproducibility
 
 The original Canavar source, raw episode table and figures now live in [`prototype/2d/`](prototype/2d/). The checked-in outputs were transferred directly from Canavar rather than reconstructed from summaries.
 
-GitHub Actions runs two jobs on every push/PR:
+GitHub Actions runs three visible validation layers on every push/PR:
 
 1. **Smoke tests** — deterministic world generation, ray sensor contract, all controller action contracts, and a known dense-map success case.
-2. **Full benchmark + robustness** — reruns `benchmark.py` and `stress_test.py`, then uploads CSV, JSON, PNG figures, and console logs as workflow artifacts.
+2. **2D full benchmark + robustness** — reruns the original Canavar benchmark and uploads CSV/JSON/PNG/log artifacts.
+3. **3D benchmark + robustness** — reruns Phase 2 nominal and stress suites and publishes a separate Actions summary/artifact.
 
 Open the **Actions** tab or click the badge above to inspect each run.
 
@@ -40,6 +53,7 @@ See `out/fafb_loom_dnp03_circuit.json` and `out/fafb_loom_dnp03_report.json`.
 ## Repository map
 
 - `prototype/2d/` — original Canavar simulation source, episode-level results and figures
+- `prototype/3d/` — Phase 2 3D micro-UAV simulation, five controllers and 3D figures
 - `tests/` — fast CI smoke tests
 - `.github/workflows/tests.yml` — visible GitHub Actions benchmark pipeline
 - `extract_fafb_circuit.py` — reproducible FAFB subgraph extraction
