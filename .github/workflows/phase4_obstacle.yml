@@ -1,0 +1,80 @@
+name: Phase 4 Lidar Obstacle Validation
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "phase4/lidar/obstacle_wall.sdf"
+      - "phase4/lidar/check_obstacle_distance.py"
+      - ".github/workflows/phase4_obstacle.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  obstacle-validation:
+    name: Gazebo obstacle → lidar → PX4 validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install MAVLink client
+        run: python -m pip install pymavlink
+      - name: Pull PX4 Gazebo image
+        run: docker pull px4io/px4-sitl-gazebo:latest
+      - name: Start PX4 x500 2D lidar
+        run: |
+          docker run --rm -d \
+            --name flydrone-px4-obstacle \
+            --network host \
+            -e HEADLESS=1 \
+            -e PX4_SIM_MODEL=gz_x500_lidar_2d \
+            -v "$GITHUB_WORKSPACE/phase4/lidar:/flydrone:ro" \
+            px4io/px4-sitl-gazebo:latest
+          sleep 8
+
+      - name: Spawn wall in Gazebo
+        run: |
+          docker exec flydrone-px4-obstacle bash -lc \
+            'gz service -s /world/default/create \
+              --reqtype gz.msgs.EntityFactory \
+              --reptype gz.msgs.Boolean \
+              --timeout 5000 \
+              --req '\''sdf_filename: "/flydrone/obstacle_wall.sdf", name: "flydrone_wall"'\''' \
+            | tee phase4/lidar/spawn_wall.log
+          sleep 2
+          docker exec flydrone-px4-obstacle bash -lc \
+            'gz model -m flydrone_wall --pose' \
+            > phase4/lidar/wall_pose.txt 2>&1 || true
+          cat phase4/lidar/spawn_wall.log
+          cat phase4/lidar/wall_pose.txt
+      - name: Verify PX4 obstacle-distance stream
+        run: |
+          python phase4/lidar/check_obstacle_distance.py \
+            | tee phase4/lidar/obstacle_distance.log
+
+      - name: Collect and summarize
+        if: always()
+        run: |
+          docker logs flydrone-px4-obstacle \
+            > phase4/lidar/obstacle_container.log 2>&1 || true
+          echo '## Phase 4 — physical obstacle validation' >> "$GITHUB_STEP_SUMMARY"
+          echo '' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Gazebo wall at x=9 m; x500_lidar_2d sensor.' >> "$GITHUB_STEP_SUMMARY"
+          echo '```json' >> "$GITHUB_STEP_SUMMARY"
+          cat phase4/lidar/mavlink_obstacle_distance.json \
+            >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || true
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          docker stop flydrone-px4-obstacle || true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: flydrone-phase4-obstacle-${{ github.run_number }}
+          path: phase4/lidar/
+          if-no-files-found: warn
