@@ -53,7 +53,7 @@ jobs:
       - name: Fly experiment
         run: |
           mkdir -p phase4/final_results
-          python phase4/final_experiment.py \
+          timeout 240s python -u phase4/final_experiment.py \
             --controller "${{ matrix.controller }}" \
             --trial 0 --seed 4100 \
             --out "phase4/final_results/${{ matrix.controller }}_trial0.json" \

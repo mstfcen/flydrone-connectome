@@ -243,13 +243,18 @@ async def run_trial(args):
     controller = CONTROLLERS[args.controller]()
     controller.reset()
     lidar = LidarReader(args.container)
+    print("STAGE lidar_start", flush=True)
     lidar.start()
     lidar.get(timeout=15.0)
+    print("STAGE lidar_ready", flush=True)
 
     drone = System()
+    print("STAGE mavsdk_connect", flush=True)
     await drone.connect(system_address="udpin://0.0.0.0:14540")
     await asyncio.wait_for(wait_connected(drone), timeout=75)
+    print("STAGE mavsdk_connected", flush=True)
     await asyncio.wait_for(wait_health(drone), timeout=90)
+    print("STAGE health_ready", flush=True)
 
     state = FlightState()
     pos_task = asyncio.create_task(track_position(drone, state))
@@ -257,8 +262,10 @@ async def run_trial(args):
 
     await drone.action.set_takeoff_altitude(2.8)
     await drone.action.arm()
+    print("STAGE takeoff", flush=True)
     await drone.action.takeoff()
     takeoff_alt = await asyncio.wait_for(wait_altitude(drone), timeout=35)
+    print(f"STAGE takeoff_ready alt={takeoff_alt:.2f}", flush=True)
     await asyncio.sleep(1.0)
 
     await drone.offboard.set_velocity_body(VelocityBodyYawspeed(0.0, 0.0, 0.0, 0.0))
@@ -271,6 +278,7 @@ async def run_trial(args):
     min_clearance = MAX_RANGE
     success = False
     failure_reason = "timeout"
+    next_log = t0
     try:
         while time.monotonic() - t0 < args.max_flight_s:
             ts, ranges, angles = lidar.get(timeout=4.0)
@@ -297,6 +305,10 @@ async def run_trial(args):
                 "speed_cmd_m_s": round(speed, 3),
                 "yaw_rate_cmd_deg_s": round(yaw_rate, 2),
             })
+
+            if now >= next_log:
+                print(f"FLIGHT t={now-t0:.1f} n={state.north:.2f} e={state.east:.2f} min={min_clearance:.2f} cmd={speed:.2f}/{yaw_rate:.1f}", flush=True)
+                next_log = now + 3.0
 
             if state.north >= GOAL_NORTH_M - 0.5:
                 success = True
