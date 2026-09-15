@@ -1,0 +1,76 @@
+name: Phase 4 Lidar Discovery
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "phase4/lidar/**"
+      - ".github/workflows/phase4_lidar.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  lidar-discovery:
+    name: PX4 Gazebo x500 2D lidar discovery
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pull PX4 Gazebo image
+        run: docker pull px4io/px4-sitl-gazebo:latest
+      - name: Start x500 2D lidar headless
+        run: |
+          docker run --rm -d \
+            --name flydrone-px4-lidar \
+            --network host \
+            -e HEADLESS=1 \
+            -e PX4_SIM_MODEL=gz_x500_lidar_2d \
+            px4io/px4-sitl-gazebo:latest
+          sleep 8
+          docker ps --filter name=flydrone-px4-lidar
+      - name: Discover Gazebo sensor topics and PX4 applets
+        run: |
+          mkdir -p phase4/lidar
+          docker exec flydrone-px4-lidar bash -lc 'gz topic -l' \
+            > phase4/lidar/gz_topics.txt 2>&1 || true
+          docker exec flydrone-px4-lidar bash -lc \
+            'find /px4 /root -type f \( -name "*listener*" -o -name "px4-*" \) 2>/dev/null | head -300' \
+            > phase4/lidar/px4_applets.txt 2>&1 || true
+          docker exec flydrone-px4-lidar bash -lc \
+            'env | sort | grep -E "^(PX4|GZ|IGN)"' \
+            > phase4/lidar/sim_env.txt 2>&1 || true
+          grep -Ei 'lidar|scan|laser|obstacle' phase4/lidar/gz_topics.txt \
+            > phase4/lidar/lidar_topics.txt || true
+          cat phase4/lidar/lidar_topics.txt
+
+      - name: Inspect candidate lidar topics
+        run: |
+          : > phase4/lidar/lidar_samples.txt
+          while IFS= read -r topic; do
+            [ -n "$topic" ] || continue
+            echo "===== $topic =====" >> phase4/lidar/lidar_samples.txt
+            timeout 8 docker exec flydrone-px4-lidar bash -lc \
+              "gz topic -e -t '$topic' -n 1" \
+              >> phase4/lidar/lidar_samples.txt 2>&1 || true
+          done < phase4/lidar/lidar_topics.txt
+          head -n 160 phase4/lidar/lidar_samples.txt
+      - name: Collect logs and publish discovery summary
+        if: always()
+        run: |
+          docker logs flydrone-px4-lidar > phase4/lidar/container.log 2>&1 || true
+          echo '## Phase 4 — x500_lidar_2d discovery' >> "$GITHUB_STEP_SUMMARY"
+          echo '' >> "$GITHUB_STEP_SUMMARY"
+          echo '### Candidate Gazebo topics' >> "$GITHUB_STEP_SUMMARY"
+          echo '```text' >> "$GITHUB_STEP_SUMMARY"
+          cat phase4/lidar/lidar_topics.txt >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || true
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          docker stop flydrone-px4-lidar || true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: flydrone-phase4-lidar-${{ github.run_number }}
+          path: phase4/lidar/
+          if-no-files-found: error
