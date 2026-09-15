@@ -32,15 +32,32 @@ First 3D held-out result (16 maps/difficulty): modified-fly scored 87.5/100/100%
 
 ![3D robustness](prototype/3d/stress_success_3d.png)
 
+## Phase 3 — 6-DoF rigid-body quadcopter
+
+Phase 3 keeps the same 3D worlds and 105-ray body-mounted retina, but replaces the idealized velocity dynamics with a four-motor X-quad rigid-body model: gravity, roll/pitch/yaw attitude and body rates, inertia, thrust mixing, first-order motor lag, aerodynamic drag, motor saturation, and deterministic wind/gust profiles.
+
+Nominal held-out result (12 maps/difficulty): heuristic fly 100/100/100%, modified-fly 100/100/91.7%, raw FlyWire 0/0/0%, bilateralized FlyWire 100/91.7/100%, and classical VFH 100/91.7/91.7% on sparse/cluttered/dense maps.
+
+The dense stress suite adds sensor noise/dropout, 160 ms high-level command latency, gusty wind, and a combined condition. Modified-fly scored 100% in every Phase-3 stress profile; bilateralized FlyWire scored 100/100/100/70/90%, while classical VFH scored 100/90/100/70/60%.
+
+![6-DoF held-out success](prototype/3d/success_rates_6dof.png)
+
+![6-DoF trajectories](prototype/3d/demo_trajectories_6dof.png)
+
+![6-DoF robustness](prototype/3d/stress_success_6dof.png)
+
+These are still simulation results rather than PX4/Gazebo hardware-in-the-loop validation. The low-level attitude/velocity controller is shared across all high-level avoidance policies so the comparison isolates the avoidance layer as much as possible.
+
 ## Tests and reproducibility
 
 The original Canavar source, raw episode table and figures now live in [`prototype/2d/`](prototype/2d/). The checked-in outputs were transferred directly from Canavar rather than reconstructed from summaries.
 
-GitHub Actions runs three visible validation layers on every push/PR:
+GitHub Actions runs four visible validation layers on every push/PR:
 
-1. **Smoke tests** — deterministic world generation, ray sensor contract, all controller action contracts, and a known dense-map success case.
+1. **Smoke tests** — deterministic world generation, retina/controller contracts, hover equilibrium, and known success cases.
 2. **2D full benchmark + robustness** — reruns the original Canavar benchmark and uploads CSV/JSON/PNG/log artifacts.
-3. **3D benchmark + robustness** — reruns Phase 2 nominal and stress suites and publishes a separate Actions summary/artifact.
+3. **Phase-2 3D benchmark + robustness** — reruns the idealized 3D nominal and stress suites.
+4. **Phase-3 6-DoF benchmark + robustness** — reruns motor/attitude rigid-body nominal and stress suites, including gusty wind.
 
 Open the **Actions** tab or click the badge above to inspect each run.
 

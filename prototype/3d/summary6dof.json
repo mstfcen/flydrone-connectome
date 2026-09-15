@@ -1,0 +1,147 @@
+{
+  "fly_heuristic_6dof": {
+    "sparse": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 27.021666666666665,
+      "mean_max_tilt_deg": 37.30751165781836,
+      "mean_motor_saturation_frac": 0.0567423712938313,
+      "mean_motor_effort": 476.8815718644937,
+      "mean_decision_us": 100.00246459454034
+    },
+    "cluttered": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 31.875,
+      "mean_max_tilt_deg": 31.734290943096624,
+      "mean_motor_saturation_frac": 0.05440485646749437,
+      "mean_motor_effort": 557.0901576446066,
+      "mean_decision_us": 103.40421007927381
+    },
+    "dense": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 39.45166666666666,
+      "mean_max_tilt_deg": 34.494762388112,
+      "mean_motor_saturation_frac": 0.05074874300961866,
+      "mean_motor_effort": 679.9452689064701,
+      "mean_decision_us": 105.09663525358371
+    }
+  },
+  "modified_fly_6dof": {
+    "sparse": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 17.743333333333336,
+      "mean_max_tilt_deg": 29.129944727773022,
+      "mean_motor_saturation_frac": 0.004983412687679261,
+      "mean_motor_effort": 303.873909581688,
+      "mean_decision_us": 124.56217309249446
+    },
+    "cluttered": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 21.923333333333332,
+      "mean_max_tilt_deg": 31.60121975238943,
+      "mean_motor_saturation_frac": 0.007772927033754665,
+      "mean_motor_effort": 374.87566796706636,
+      "mean_decision_us": 120.9581488075287
+    },
+    "dense": {
+      "success_rate": 0.9166666666666666,
+      "collision_rate": 0.0,
+      "mean_time_s": 28.701666666666664,
+      "mean_max_tilt_deg": 32.30961028944171,
+      "mean_motor_saturation_frac": 0.0066736816374283236,
+      "mean_motor_effort": 492.10415723284956,
+      "mean_decision_us": 123.92620797270354
+    }
+  },
+  "flywire_raw_6dof": {
+    "sparse": {
+      "success_rate": 0.0,
+      "collision_rate": 1.0,
+      "mean_time_s": 15.081666666666669,
+      "mean_max_tilt_deg": 25.83361800228127,
+      "mean_motor_saturation_frac": 0.0021489350600830694,
+      "mean_motor_effort": 245.08185427061372,
+      "mean_decision_us": 275.4363382907569
+    },
+    "cluttered": {
+      "success_rate": 0.0,
+      "collision_rate": 1.0,
+      "mean_time_s": 13.168333333333331,
+      "mean_max_tilt_deg": 25.719902046551976,
+      "mean_motor_saturation_frac": 0.0028612739870938855,
+      "mean_motor_effort": 212.66131449100098,
+      "mean_decision_us": 266.7842182385989
+    },
+    "dense": {
+      "success_rate": 0.0,
+      "collision_rate": 1.0,
+      "mean_time_s": 12.348333333333331,
+      "mean_max_tilt_deg": 25.48955958052086,
+      "mean_motor_saturation_frac": 0.003273718788854003,
+      "mean_motor_effort": 199.2590656034579,
+      "mean_decision_us": 271.3199120961285
+    }
+  },
+  "flywire_bilateral_6dof": {
+    "sparse": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 23.50166666666667,
+      "mean_max_tilt_deg": 31.27394664620815,
+      "mean_motor_saturation_frac": 0.010427039339008216,
+      "mean_motor_effort": 399.3945265319014,
+      "mean_decision_us": 375.7376240821031
+    },
+    "cluttered": {
+      "success_rate": 0.9166666666666666,
+      "collision_rate": 0.0,
+      "mean_time_s": 28.01833333333333,
+      "mean_max_tilt_deg": 30.50359214099508,
+      "mean_motor_saturation_frac": 0.011420271033445369,
+      "mean_motor_effort": 478.6066265670623,
+      "mean_decision_us": 372.3480731220963
+    },
+    "dense": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 29.688333333333333,
+      "mean_max_tilt_deg": 30.635292204586268,
+      "mean_motor_saturation_frac": 0.009568311919821009,
+      "mean_motor_effort": 504.36567421886656,
+      "mean_decision_us": 373.4557762777288
+    }
+  },
+  "classical_vfh_6dof": {
+    "sparse": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 14.593333333333334,
+      "mean_max_tilt_deg": 31.871378172911033,
+      "mean_motor_saturation_frac": 0.0025930879090256434,
+      "mean_motor_effort": 236.1513876647608,
+      "mean_decision_us": 91.2205431834073
+    },
+    "cluttered": {
+      "success_rate": 0.9166666666666666,
+      "collision_rate": 0.08333333333333333,
+      "mean_time_s": 16.400000000000002,
+      "mean_max_tilt_deg": 31.94157928472512,
+      "mean_motor_saturation_frac": 0.003699923224950496,
+      "mean_motor_effort": 267.39857528327076,
+      "mean_decision_us": 90.30013370916714
+    },
+    "dense": {
+      "success_rate": 0.9166666666666666,
+      "collision_rate": 0.08333333333333333,
+      "mean_time_s": 18.24,
+      "mean_max_tilt_deg": 32.17485923645191,
+      "mean_motor_saturation_frac": 0.003063296902605253,
+      "mean_motor_effort": 298.56061361196527,
+      "mean_decision_us": 89.82700991495155
+    }
+  }
+}

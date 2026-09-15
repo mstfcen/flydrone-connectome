@@ -1,0 +1,17 @@
+=== PHASE 3 — 6-DoF (12 maps / difficulty) ===
+controller                 difficulty   success  collision   time_s    tilt     sat
+fly_heuristic_6dof         sparse        100.0%       0.0%    27.02   37.3°    5.7%
+fly_heuristic_6dof         cluttered     100.0%       0.0%    31.88   31.7°    5.4%
+fly_heuristic_6dof         dense         100.0%       0.0%    39.45   34.5°    5.1%
+modified_fly_6dof          sparse        100.0%       0.0%    17.74   29.1°    0.5%
+modified_fly_6dof          cluttered     100.0%       0.0%    21.92   31.6°    0.8%
+modified_fly_6dof          dense          91.7%       0.0%    28.70   32.3°    0.7%
+flywire_raw_6dof           sparse          0.0%     100.0%    15.08   25.8°    0.2%
+flywire_raw_6dof           cluttered       0.0%     100.0%    13.17   25.7°    0.3%
+flywire_raw_6dof           dense           0.0%     100.0%    12.35   25.5°    0.3%
+flywire_bilateral_6dof     sparse        100.0%       0.0%    23.50   31.3°    1.0%
+flywire_bilateral_6dof     cluttered      91.7%       0.0%    28.02   30.5°    1.1%
+flywire_bilateral_6dof     dense         100.0%       0.0%    29.69   30.6°    1.0%
+classical_vfh_6dof         sparse        100.0%       0.0%    14.59   31.9°    0.3%
+classical_vfh_6dof         cluttered      91.7%       8.3%    16.40   31.9°    0.4%
+classical_vfh_6dof         dense          91.7%       8.3%    18.24   32.2°    0.3%

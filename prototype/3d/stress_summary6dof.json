@@ -1,0 +1,187 @@
+{
+  "clean": {
+    "fly_heuristic_6dof": {
+      "success_rate": 0.9,
+      "collision_rate": 0.0,
+      "mean_time_s": 44.168000000000006,
+      "mean_max_tilt_deg": 36.48873414892361,
+      "mean_motor_saturation_frac": 0.05975179907019127
+    },
+    "modified_fly_6dof": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 22.89,
+      "mean_max_tilt_deg": 32.29120855160628,
+      "mean_motor_saturation_frac": 0.0049412317045091905
+    },
+    "flywire_raw_6dof": {
+      "success_rate": 0.0,
+      "collision_rate": 1.0,
+      "mean_time_s": 12.416,
+      "mean_max_tilt_deg": 23.06756496312318,
+      "mean_motor_saturation_frac": 0.002638779075612215
+    },
+    "flywire_bilateral_6dof": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 26.534000000000002,
+      "mean_max_tilt_deg": 31.706214056081734,
+      "mean_motor_saturation_frac": 0.012866058804628058
+    },
+    "classical_vfh_6dof": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 19.440000000000005,
+      "mean_max_tilt_deg": 31.955125456753855,
+      "mean_motor_saturation_frac": 0.0033804713266136653
+    }
+  },
+  "sensor_noise": {
+    "fly_heuristic_6dof": {
+      "success_rate": 0.1,
+      "collision_rate": 0.0,
+      "mean_time_s": 74.924,
+      "mean_max_tilt_deg": 31.180816123783067,
+      "mean_motor_saturation_frac": 0.03652258620689656
+    },
+    "modified_fly_6dof": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 22.774,
+      "mean_max_tilt_deg": 26.660089790933075,
+      "mean_motor_saturation_frac": 0.005164793388565852
+    },
+    "flywire_raw_6dof": {
+      "success_rate": 0.0,
+      "collision_rate": 1.0,
+      "mean_time_s": 11.974,
+      "mean_max_tilt_deg": 20.613008225166546,
+      "mean_motor_saturation_frac": 0.004042947340204878
+    },
+    "flywire_bilateral_6dof": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 24.68,
+      "mean_max_tilt_deg": 25.335046915893052,
+      "mean_motor_saturation_frac": 0.0029899851918642572
+    },
+    "classical_vfh_6dof": {
+      "success_rate": 0.9,
+      "collision_rate": 0.1,
+      "mean_time_s": 18.351999999999997,
+      "mean_max_tilt_deg": 31.90752090776665,
+      "mean_motor_saturation_frac": 0.006535063055429594
+    }
+  },
+  "latency_160ms": {
+    "fly_heuristic_6dof": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 53.774,
+      "mean_max_tilt_deg": 33.62829281924253,
+      "mean_motor_saturation_frac": 0.07397779248855411
+    },
+    "modified_fly_6dof": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 26.208,
+      "mean_max_tilt_deg": 30.565015063597762,
+      "mean_motor_saturation_frac": 0.004267347100264118
+    },
+    "flywire_raw_6dof": {
+      "success_rate": 0.0,
+      "collision_rate": 1.0,
+      "mean_time_s": 12.046000000000001,
+      "mean_max_tilt_deg": 24.203262638703983,
+      "mean_motor_saturation_frac": 0.002092409045047184
+    },
+    "flywire_bilateral_6dof": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 23.572,
+      "mean_max_tilt_deg": 27.10762704031712,
+      "mean_motor_saturation_frac": 0.0249834794231401
+    },
+    "classical_vfh_6dof": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 18.854,
+      "mean_max_tilt_deg": 32.212423019550876,
+      "mean_motor_saturation_frac": 0.0
+    }
+  },
+  "gusty_wind": {
+    "fly_heuristic_6dof": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 40.907999999999994,
+      "mean_max_tilt_deg": 34.24188680688834,
+      "mean_motor_saturation_frac": 0.06128034433911743
+    },
+    "modified_fly_6dof": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 23.792,
+      "mean_max_tilt_deg": 30.004245245567482,
+      "mean_motor_saturation_frac": 0.006442930813227934
+    },
+    "flywire_raw_6dof": {
+      "success_rate": 0.0,
+      "collision_rate": 1.0,
+      "mean_time_s": 11.98,
+      "mean_max_tilt_deg": 21.809444113900234,
+      "mean_motor_saturation_frac": 0.0027002948042708936
+    },
+    "flywire_bilateral_6dof": {
+      "success_rate": 0.7,
+      "collision_rate": 0.0,
+      "mean_time_s": 44.766000000000005,
+      "mean_max_tilt_deg": 32.093312530718535,
+      "mean_motor_saturation_frac": 0.013012692873281167
+    },
+    "classical_vfh_6dof": {
+      "success_rate": 0.7,
+      "collision_rate": 0.3,
+      "mean_time_s": 17.386,
+      "mean_max_tilt_deg": 32.588896920048754,
+      "mean_motor_saturation_frac": 0.0034021324393411862
+    }
+  },
+  "combined": {
+    "fly_heuristic_6dof": {
+      "success_rate": 0.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 75.0,
+      "mean_max_tilt_deg": 34.60643928208192,
+      "mean_motor_saturation_frac": 0.03872
+    },
+    "modified_fly_6dof": {
+      "success_rate": 1.0,
+      "collision_rate": 0.0,
+      "mean_time_s": 24.948,
+      "mean_max_tilt_deg": 27.327830475740996,
+      "mean_motor_saturation_frac": 0.00728826380011411
+    },
+    "flywire_raw_6dof": {
+      "success_rate": 0.0,
+      "collision_rate": 1.0,
+      "mean_time_s": 11.518,
+      "mean_max_tilt_deg": 24.53280445921669,
+      "mean_motor_saturation_frac": 0.0020043577955486604
+    },
+    "flywire_bilateral_6dof": {
+      "success_rate": 0.9,
+      "collision_rate": 0.1,
+      "mean_time_s": 22.744000000000003,
+      "mean_max_tilt_deg": 27.09033245475329,
+      "mean_motor_saturation_frac": 0.005744554519116495
+    },
+    "classical_vfh_6dof": {
+      "success_rate": 0.6,
+      "collision_rate": 0.4,
+      "mean_time_s": 13.834,
+      "mean_max_tilt_deg": 31.871823514953736,
+      "mean_motor_saturation_frac": 0.0003777148253068933
+    }
+  }
+}
