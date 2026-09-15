@@ -82,7 +82,8 @@ jobs:
         working-directory: prototype/3d
         run: python stress3d.py | tee stress3d.log
       - name: Publish 3D tables to Actions summary
-        run: python scripts/render_3d_summary.py >> "$GITHUB_STEP_SUMMARY"      - uses: actions/upload-artifact@v4
+        run: python scripts/render_3d_summary.py >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
         with:
           name: flydrone-3d-${{ github.run_number }}
           path: |
