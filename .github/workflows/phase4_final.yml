@@ -1,0 +1,85 @@
+name: Final PX4 Gazebo Avoidance Experiment
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "phase4/final_experiment.py"
+      - "phase4/lidar/obstacle_wall.sdf"
+      - ".github/workflows/phase4_final.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  flight:
+    name: ${{ matrix.controller }} / PX4 wall trial
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        controller: [modified_fly, no_avoidance]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install MAVSDK
+        run: python -m pip install mavsdk
+      - name: Start PX4 x500 2D lidar
+        run: |
+          docker pull px4io/px4-sitl-gazebo:latest
+          docker run --rm -d \
+            --name flydrone-final \
+            --network host \
+            -e HEADLESS=1 \
+            -e PX4_SIM_MODEL=gz_x500_lidar_2d \
+            -v "$GITHUB_WORKSPACE/phase4:/flydrone:ro" \
+            px4io/px4-sitl-gazebo:latest
+          sleep 8
+
+      - name: Spawn physical wall
+        run: |
+          docker exec flydrone-final bash -lc \
+            'gz service -s /world/default/create \
+              --reqtype gz.msgs.EntityFactory \
+              --reptype gz.msgs.Boolean \
+              --timeout 5000 \
+              --req '\''sdf_filename: "/flydrone/lidar/obstacle_wall.sdf", name: "flydrone_wall"'\'''
+          sleep 2
+
+      - name: Fly experiment
+        run: |
+          mkdir -p phase4/final_results
+          python phase4/final_experiment.py \
+            --controller "${{ matrix.controller }}" \
+            --trial 0 --seed 4100 \
+            --out "phase4/final_results/${{ matrix.controller }}_trial0.json" \
+            | tee "phase4/final_results/${{ matrix.controller }}_trial0.log"
+      - name: Collect logs
+        if: always()
+        run: |
+          mkdir -p phase4/final_results
+          docker logs flydrone-final \
+            > "phase4/final_results/${{ matrix.controller }}_container.log" 2>&1 || true
+          docker stop flydrone-final || true
+
+      - name: Publish summary
+        if: always()
+        run: |
+          echo "## PX4/Gazebo wall trial — ${{ matrix.controller }}" >> "$GITHUB_STEP_SUMMARY"
+          echo '' >> "$GITHUB_STEP_SUMMARY"
+          echo '```json' >> "$GITHUB_STEP_SUMMARY"
+          cat "phase4/final_results/${{ matrix.controller }}_trial0.json" \
+            | python -c 'import json,sys; d=json.load(sys.stdin); d.pop("trajectory",None); print(json.dumps(d,indent=2))' \
+            >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || true
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: final-${{ matrix.controller }}-${{ github.run_number }}
+          path: phase4/final_results/
+          if-no-files-found: warn
