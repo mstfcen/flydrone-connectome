@@ -1,0 +1,63 @@
+name: Phase 4 PX4 Gazebo SITL
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "phase4/**"
+      - ".github/workflows/phase4_px4.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  px4-gazebo-smoke:
+    name: PX4 + Gazebo x500 flight smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install MAVSDK
+        run: python -m pip install mavsdk
+      - name: Pull official PX4 Gazebo image
+        run: docker pull px4io/px4-sitl-gazebo:latest
+      - name: Start PX4 + Gazebo headless
+        run: |
+          docker run --rm -d \
+            --name flydrone-px4-gz \
+            --network host \
+            -e HEADLESS=1 \
+            -e PX4_SIM_MODEL=gz_x500 \
+            px4io/px4-sitl-gazebo:latest
+          sleep 5
+          docker ps --filter name=flydrone-px4-gz
+      - name: Fly takeoff and land smoke mission
+        run: python phase4/px4_gazebo_smoke.py | tee phase4/px4_gazebo_smoke.log
+      - name: Collect PX4 Gazebo logs
+        if: always()
+        run: |
+          docker logs flydrone-px4-gz > phase4/px4_gazebo_container.log 2>&1 || true
+          docker stop flydrone-px4-gz || true
+      - name: Publish Phase 4 summary
+        if: always()
+        run: |
+          echo '## Phase 4 — PX4 + Gazebo SITL' >> "$GITHUB_STEP_SUMMARY"
+          echo '' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Official `px4io/px4-sitl-gazebo` image, headless `gz_x500`.' >> "$GITHUB_STEP_SUMMARY"
+          echo '```json' >> "$GITHUB_STEP_SUMMARY"
+          cat phase4/px4_gazebo_smoke.json >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || true
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: flydrone-phase4-px4-${{ github.run_number }}
+          path: |
+            phase4/px4_gazebo_smoke.json
+            phase4/px4_gazebo_smoke.log
+            phase4/px4_gazebo_container.log
+          if-no-files-found: warn
