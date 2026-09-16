@@ -1,0 +1,5 @@
+{
+  "48": {"success_rate": 0.8333333333333334, "collision_rate": 0.11666666666666667, "mean_steps": 287.31666666666666, "mean_progress": 0.9352566360648926, "mean_min_clearance_m": 1.1750134411766038},
+  "40": {"success_rate": 0.8666666666666667, "collision_rate": 0.1, "mean_steps": 285.6, "mean_progress": 0.9330247316695917, "mean_min_clearance_m": 1.1137379076000467},
+  "32": {"success_rate": 0.85, "collision_rate": 0.15, "mean_steps": 252.98333333333332, "mean_progress": 0.9223592492242534, "mean_min_clearance_m": 1.0051973911279053}
+}

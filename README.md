@@ -27,6 +27,18 @@ In the current 6-DoF dense-scene stress suite (10 held-out runs per profile), th
 
 These results are **simulation evidence, not a claim of general biological superiority**. The sample sizes are intentionally modest, the environments are synthetic, and the bilateral FlyWire controller includes an explicit engineering intervention. See [Limitations](docs/LIMITATIONS.md).
 
+## Learned sparse extension (v0.2)
+
+A second experiment treats the 377-neuron FlyWire-derived graph as a fixed structural prior and learns edge gains, node dynamics and differentiable node gates from `modified_fly` imitation data.
+
+![Learned connectome pruning curve](experiments/learned_sparse/pruning_curve.png)
+
+On a 60-map selection set, an aggressive **24-neuron** mask matched the 377-neuron model's 83.3% success point estimate. After that size was frozen, a fresh 60-map confirmation set measured **85.0%** success for the 377-neuron model and **76.7%** for the fixed 24-neuron model. Post-hoc characterization placed a more conservative sparse regime around **32–40 active neurons**, which produced 85.0–86.7% on the same confirmation maps.
+
+Five matched random 24-neuron masks averaged only **14.3%** success, indicating that the learned gate ranking carries task-relevant pruning information. This is a structured-pruning result, not a claim that a biological fly needs only 24 neurons for avoidance.
+
+See the [v0.2 final report](docs/LEARNED_SPARSE_REPORT.md) and the [reproducible experiment directory](experiments/learned_sparse/README.md).
+
 ## What is connectome-derived?
 
 A compact circuit is extracted reproducibly from **FlyWire FAFB v783** around looming-sensitive visual pathways and the DNp03 descending-neuron target:
@@ -46,10 +58,12 @@ flowchart LR
     FW[FlyWire FAFB v783] --> EX[Subgraph extraction]
     EX --> RAW[Raw FlyWire policy]
     EX --> BI[Engineered bilateral policy]
+    EX --> LS[Learned sparse connectome]
     S[Range / looming input] --> MF[Modified fly policy]
     S --> VFH[Classical VFH baseline]
     RAW --> EVAL[Controller evaluation]
     BI --> EVAL
+    LS --> EVAL
     MF --> EVAL
     VFH --> EVAL
     EVAL --> D2[2D]
@@ -71,6 +85,7 @@ The low-level vehicle dynamics are shared between policies so the staged compari
 | Gazebo `x500_lidar_2d` | ✅ | Live 1080-ray scan, ~270° FOV, 0.1–30 m |
 | Runtime obstacle spawn | ✅ | Physical wall inserted into Gazebo world |
 | MAVLink obstacle bridge | ⚠️ | No automatic `OBSTACLE_DISTANCE` stream observed |
+| Learned connectome sparsification | ✅ | Fixed-topology training, hard pruning, random-mask and confirmation sets |
 | Closed-loop PX4 avoidance | 🚧 | Experimental; current offboard integration is not validated |
 ## Controllers under test
 
@@ -112,6 +127,7 @@ out/                      compact extracted circuit + report
 prototype/2d/             2D baseline and robustness experiments
 prototype/3d/             3D + 6-DoF simulations and results
 phase4/                   PX4/Gazebo SITL boundary experiments
+experiments/learned_sparse/ v0.2 trainable/prunable connectome experiment
 tests/                    deterministic regression/smoke tests
 docs/                     architecture, experiments and limitations
 .github/workflows/         reproducible CI and SITL diagnostics
@@ -122,6 +138,7 @@ docs/                     architecture, experiments and limitations
 - [Architecture](docs/ARCHITECTURE.md)
 - [Experiment design and results](docs/EXPERIMENTS.md)
 - [Limitations and open questions](docs/LIMITATIONS.md)
+- [Learned sparse connectome — final report](docs/LEARNED_SPARSE_REPORT.md)
 - [PX4/Gazebo integration status](phase4/README.md)
 
-FlyDrone is intentionally scoped as a compact research prototype. The next meaningful milestone is a validated closed-loop PX4/Gazebo obstacle-avoidance trial, followed by hardware-in-the-loop or controlled real-vehicle testing.
+FlyDrone is intentionally scoped as a compact research prototype. The staged simulation/connectome study and the v0.2 sparsification extension are now frozen as reported baselines. Closed-loop PX4/Gazebo avoidance and real-vehicle testing are explicitly future work rather than claims of this release.

@@ -32,3 +32,14 @@ For that reason, the public status table marks closed-loop PX4 avoidance as **ex
 No real vehicle flight, hardware-in-the-loop validation, event camera, propeller/ESC characterization or safety certification is included.
 
 A meaningful next step would be to validate the high-level controller against PX4/Gazebo with repeatable obstacle trials, then repeat the same protocol in hardware-in-the-loop before considering controlled physical flight.
+## Learned sparsification extension
+
+The v0.2 sparse-connectome experiment is an **imitation-learning and pruning** study. The student learns to approximate the engineered `modified_fly` teacher; it does not independently discover the policy from a task reward.
+
+The visual-to-neuron projection is synthetic, and the learned bilateral execution mirrors one shared circuit because the selected right DNp03 pathway is incomplete in the extracted snapshot. Neurotransmitter sign handling is also approximate.
+
+The 24-node mask was selected on one 60-map set. On a fresh confirmation set it scored 76.7% versus 85.0% for the unpruned learned network, so the selection-set equality should not be presented as out-of-sample equivalence. The later 32–40 node characterization used the already-opened confirmation set and is therefore post-hoc.
+
+Random-mask comparisons reuse the learned weights and remove different nodes without retraining. They demonstrate that the learned importance ranking is informative under this model, not that the retained topology is superior to every randomly initialized or retrained sparse network.
+
+The learned sparse controller is evaluated only in the 2D closed-loop arena in this release. It has not been validated in the 3D, 6-DoF or PX4/Gazebo stages.

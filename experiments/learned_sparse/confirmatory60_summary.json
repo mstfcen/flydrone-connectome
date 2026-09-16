@@ -1,0 +1,7 @@
+{
+  "protocol": "confirmatory after fixing k=24",
+  "seed_range": [28000, 28059],
+  "teacher": {"success_rate": 0.9333333333333333, "collision_rate": 0.06666666666666667, "mean_steps": 333.9166666666667, "mean_progress": 0.9565535587905892, "mean_min_clearance_m": 0.7571813289356076, "success_ci95": [0.8407464268680283, 0.9737713012754938], "n": 60},
+  "unpruned_377": {"success_rate": 0.85, "collision_rate": 0.1, "mean_steps": 292.15, "mean_progress": 0.9321465618757444, "mean_min_clearance_m": 1.180676778857775, "success_ci95": [0.7388541093022145, 0.9190255941983225], "n": 60},
+  "fixed_24": {"success_rate": 0.7666666666666667, "collision_rate": 0.21666666666666667, "mean_steps": 236.53333333333333, "mean_progress": 0.860960266816776, "mean_min_clearance_m": 0.8135555119364883, "success_ci95": [0.6456372962239805, 0.8556043826335717], "n": 60}
+}
