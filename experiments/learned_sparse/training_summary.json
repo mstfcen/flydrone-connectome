@@ -1,0 +1,672 @@
+{
+  "seed": 20260916,
+  "nodes": 377,
+  "edges": 1117,
+  "final_validation": {
+    "weighted_loss": 0.0413038181478677,
+    "speed_rmse_norm": 0.13702455313633954,
+    "omega_rmse_norm": 0.15798337844385943
+  },
+  "gate_mean": 0.07403869181871414,
+  "gate_median": 0.00457430724054575,
+  "gate_lt_0.5": 357,
+  "gate_lt_0.2": 335,
+  "history": [
+    {
+      "stage": "imitation",
+      "epoch": 1,
+      "lambda": 0.0,
+      "train_objective": 0.08491128338085167,
+      "val": {
+        "weighted_loss": 0.06731094794695364,
+        "speed_rmse_norm": 0.15757349934913603,
+        "omega_rmse_norm": 0.2156997559367812
+      },
+      "gate_mean": 0.9566767811775208,
+      "gate_lt_0.5": 0,
+      "gate_lt_0.2": 0
+    },
+    {
+      "stage": "imitation",
+      "epoch": 10,
+      "lambda": 0.0,
+      "train_objective": 0.0504154253825333,
+      "val": {
+        "weighted_loss": 0.04277008514785028,
+        "speed_rmse_norm": 0.12263043270775298,
+        "omega_rmse_norm": 0.164955956575772
+      },
+      "gate_mean": 0.9753469824790955,
+      "gate_lt_0.5": 0,
+      "gate_lt_0.2": 0
+    },
+    {
+      "stage": "imitation",
+      "epoch": 20,
+      "lambda": 0.0,
+      "train_objective": 0.048947491215193484,
+      "val": {
+        "weighted_loss": 0.041173295470920926,
+        "speed_rmse_norm": 0.12168773747225523,
+        "omega_rmse_norm": 0.16020289313770225
+      },
+      "gate_mean": 0.9825414419174194,
+      "gate_lt_0.5": 0,
+      "gate_lt_0.2": 0
+    },
+    {
+      "stage": "imitation",
+      "epoch": 30,
+      "lambda": 0.0,
+      "train_objective": 0.04853247552119542,
+      "val": {
+        "weighted_loss": 0.04056543672927603,
+        "speed_rmse_norm": 0.12181116042433153,
+        "omega_rmse_norm": 0.1584972005323561
+      },
+      "gate_mean": 0.9863541722297668,
+      "gate_lt_0.5": 0,
+      "gate_lt_0.2": 0
+    },
+    {
+      "stage": "imitation",
+      "epoch": 40,
+      "lambda": 0.0,
+      "train_objective": 0.04838582566264461,
+      "val": {
+        "weighted_loss": 0.040078117544704465,
+        "speed_rmse_norm": 0.12092752145651987,
+        "omega_rmse_norm": 0.15741568907492481
+      },
+      "gate_mean": 0.9887955784797668,
+      "gate_lt_0.5": 0,
+      "gate_lt_0.2": 0
+    },
+    {
+      "stage": "imitation",
+      "epoch": 45,
+      "lambda": 0.0,
+      "train_objective": 0.04814508362033768,
+      "val": {
+        "weighted_loss": 0.039877420199216,
+        "speed_rmse_norm": 0.11997808968517788,
+        "omega_rmse_norm": 0.15712153415556243
+      },
+      "gate_mean": 0.9897022247314453,
+      "gate_lt_0.5": 0,
+      "gate_lt_0.2": 0
+    },
+    {
+      "stage": "sparsify",
+      "epoch": 1,
+      "lambda": 0.005,
+      "train_objective": 0.05306762770695677,
+      "val": {
+        "weighted_loss": 0.03992901121904053,
+        "speed_rmse_norm": 0.1214663038043421,
+        "omega_rmse_norm": 0.15700715639994814
+      },
+      "gate_mean": 0.9897134900093079,
+      "gate_lt_0.5": 0,
+      "gate_lt_0.2": 0
+    },
+    {
+      "stage": "sparsify",
+      "epoch": 10,
+      "lambda": 0.011605504587155964,
+      "train_objective": 0.05949389481915255,
+      "val": {
+        "weighted_loss": 0.03969507915168588,
+        "speed_rmse_norm": 0.12098359096525002,
+        "omega_rmse_norm": 0.15656325880286356
+      },
+      "gate_mean": 0.9875010848045349,
+      "gate_lt_0.5": 0,
+      "gate_lt_0.2": 0
+    },
+    {
+      "stage": "sparsify",
+      "epoch": 20,
+      "lambda": 0.01894495412844037,
+      "train_objective": 0.06608446830952609,
+      "val": {
+        "weighted_loss": 0.03950869083041098,
+        "speed_rmse_norm": 0.1218744492571976,
+        "omega_rmse_norm": 0.1559804048115508
+      },
+      "gate_mean": 0.9426334500312805,
+      "gate_lt_0.5": 0,
+      "gate_lt_0.2": 0
+    },
+    {
+      "stage": "sparsify",
+      "epoch": 30,
+      "lambda": 0.026284403669724773,
+      "train_objective": 0.06423855642562579,
+      "val": {
+        "weighted_loss": 0.039652973749897714,
+        "speed_rmse_norm": 0.12292519611050207,
+        "omega_rmse_norm": 0.15617702867885394
+      },
+      "gate_mean": 0.5871245265007019,
+      "gate_lt_0.5": 192,
+      "gate_lt_0.2": 3
+    },
+    {
+      "stage": "sparsify",
+      "epoch": 40,
+      "lambda": 0.03362385321100918,
+      "train_objective": 0.061385024495330856,
+      "val": {
+        "weighted_loss": 0.039899362308871374,
+        "speed_rmse_norm": 0.12403170691205537,
+        "omega_rmse_norm": 0.15651131528054213
+      },
+      "gate_mean": 0.37519532442092896,
+      "gate_lt_0.5": 254,
+      "gate_lt_0.2": 211
+    },
+    {
+      "stage": "sparsify",
+      "epoch": 50,
+      "lambda": 0.04096330275229358,
+      "train_objective": 0.059499064827972896,
+      "val": {
+        "weighted_loss": 0.04030327119262264,
+        "speed_rmse_norm": 0.12718641874235087,
+        "omega_rmse_norm": 0.15697455318591705
+      },
+      "gate_mean": 0.26239797472953796,
+      "gate_lt_0.5": 291,
+      "gate_lt_0.2": 250
+    },
+    {
+      "stage": "sparsify",
+      "epoch": 60,
+      "lambda": 0.04830275229357798,
+      "train_objective": 0.05847678666780477,
+      "val": {
+        "weighted_loss": 0.04056423730367332,
+        "speed_rmse_norm": 0.12942620915172434,
+        "omega_rmse_norm": 0.15720378197058085
+      },
+      "gate_mean": 0.19544027745723724,
+      "gate_lt_0.5": 315,
+      "gate_lt_0.2": 285
+    },
+    {
+      "stage": "sparsify",
+      "epoch": 70,
+      "lambda": 0.05564220183486238,
+      "train_objective": 0.057491571792283744,
+      "val": {
+        "weighted_loss": 0.040829328720653695,
+        "speed_rmse_norm": 0.13305623482962398,
+        "omega_rmse_norm": 0.15733548832508018
+      },
+      "gate_mean": 0.15091395378112793,
+      "gate_lt_0.5": 327,
+      "gate_lt_0.2": 299
+    },
+    {
+      "stage": "sparsify",
+      "epoch": 80,
+      "lambda": 0.0629816513761468,
+      "train_objective": 0.05676831073372679,
+      "val": {
+        "weighted_loss": 0.04096586651604036,
+        "speed_rmse_norm": 0.13318890355089374,
+        "omega_rmse_norm": 0.15775346610931112
+      },
+      "gate_mean": 0.12124045193195343,
+      "gate_lt_0.5": 338,
+      "gate_lt_0.2": 313
+    },
+    {
+      "stage": "sparsify",
+      "epoch": 90,
+      "lambda": 0.0703211009174312,
+      "train_objective": 0.056272330166947125,
+      "val": {
+        "weighted_loss": 0.04106866365977629,
+        "speed_rmse_norm": 0.13459669973684144,
+        "omega_rmse_norm": 0.15774821775920136
+      },
+      "gate_mean": 0.10085028409957886,
+      "gate_lt_0.5": 346,
+      "gate_lt_0.2": 324
+    },
+    {
+      "stage": "sparsify",
+      "epoch": 100,
+      "lambda": 0.0776605504587156,
+      "train_objective": 0.05615150777999832,
+      "val": {
+        "weighted_loss": 0.04117836454489079,
+        "speed_rmse_norm": 0.13590434815545235,
+        "omega_rmse_norm": 0.15781001889639779
+      },
+      "gate_mean": 0.08582175523042679,
+      "gate_lt_0.5": 351,
+      "gate_lt_0.2": 331
+    },
+    {
+      "stage": "sparsify",
+      "epoch": 110,
+      "lambda": 0.085,
+      "train_objective": 0.055607826494791346,
+      "val": {
+        "weighted_loss": 0.0413038181478677,
+        "speed_rmse_norm": 0.13702455313633954,
+        "omega_rmse_norm": 0.15798337844385943
+      },
+      "gate_mean": 0.07403869181871414,
+      "gate_lt_0.5": 357,
+      "gate_lt_0.2": 335
+    }
+  ],
+  "top_20": [
+    {
+      "rank": 1,
+      "node_index": 237,
+      "root_id": "720575940627645514",
+      "type": "DNp03",
+      "side": "left",
+      "gate": 1.0,
+      "is_input": false,
+      "is_output": true
+    },
+    {
+      "rank": 2,
+      "node_index": 231,
+      "root_id": "720575940626916936",
+      "type": "LC4",
+      "side": "left",
+      "gate": 0.9992179870605469,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 3,
+      "node_index": 371,
+      "root_id": "720575940649229433",
+      "type": "LC4",
+      "side": "left",
+      "gate": 0.9952373504638672,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 4,
+      "node_index": 123,
+      "root_id": "720575940619397542",
+      "type": "LC4",
+      "side": "left",
+      "gate": 0.9089308977127075,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 5,
+      "node_index": 353,
+      "root_id": "720575940641216976",
+      "type": "LPLC4",
+      "side": "left",
+      "gate": 0.895269513130188,
+      "is_input": false,
+      "is_output": false
+    },
+    {
+      "rank": 6,
+      "node_index": 140,
+      "root_id": "720575940620729816",
+      "type": "LPLC4",
+      "side": "left",
+      "gate": 0.877670407295227,
+      "is_input": false,
+      "is_output": false
+    },
+    {
+      "rank": 7,
+      "node_index": 248,
+      "root_id": "720575940628462340",
+      "type": "LC4",
+      "side": "left",
+      "gate": 0.847618818283081,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 8,
+      "node_index": 349,
+      "root_id": "720575940640612480",
+      "type": "LC4",
+      "side": "left",
+      "gate": 0.8132306933403015,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 9,
+      "node_index": 75,
+      "root_id": "720575940615575007",
+      "type": "LC4",
+      "side": "left",
+      "gate": 0.7414170503616333,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 10,
+      "node_index": 217,
+      "root_id": "720575940626375172",
+      "type": "LPLC2",
+      "side": "left",
+      "gate": 0.7375131249427795,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 11,
+      "node_index": 144,
+      "root_id": "720575940620813989",
+      "type": "LTe20",
+      "side": "left",
+      "gate": 0.7306238412857056,
+      "is_input": false,
+      "is_output": false
+    },
+    {
+      "rank": 12,
+      "node_index": 61,
+      "root_id": "720575940614572742",
+      "type": "LC4",
+      "side": "left",
+      "gate": 0.6667170524597168,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 13,
+      "node_index": 332,
+      "root_id": "720575940638456227",
+      "type": "LC4",
+      "side": "left",
+      "gate": 0.6101800799369812,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 14,
+      "node_index": 280,
+      "root_id": "720575940630998339",
+      "type": "LC4",
+      "side": "left",
+      "gate": 0.6003807187080383,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 15,
+      "node_index": 345,
+      "root_id": "720575940640172221",
+      "type": "CL323a",
+      "side": "left",
+      "gate": 0.5981770157814026,
+      "is_input": false,
+      "is_output": false
+    },
+    {
+      "rank": 16,
+      "node_index": 346,
+      "root_id": "720575940640302389",
+      "type": "LPLC2",
+      "side": "left",
+      "gate": 0.5980595946311951,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 17,
+      "node_index": 74,
+      "root_id": "720575940615528678",
+      "type": "PVLP024",
+      "side": "right",
+      "gate": 0.5804906487464905,
+      "is_input": false,
+      "is_output": false
+    },
+    {
+      "rank": 18,
+      "node_index": 205,
+      "root_id": "720575940625697772",
+      "type": "LPLC2",
+      "side": "left",
+      "gate": 0.5718681216239929,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 19,
+      "node_index": 308,
+      "root_id": "720575940634223514",
+      "type": "LPLC4",
+      "side": "left",
+      "gate": 0.5472754240036011,
+      "is_input": false,
+      "is_output": false
+    },
+    {
+      "rank": 20,
+      "node_index": 171,
+      "root_id": "720575940623003653",
+      "type": "LPLC4",
+      "side": "left",
+      "gate": 0.51943439245224,
+      "is_input": false,
+      "is_output": false
+    }
+  ],
+  "bottom_20": [
+    {
+      "rank": 358,
+      "node_index": 343,
+      "root_id": "720575940639884878",
+      "type": "LPLC2",
+      "side": "left",
+      "gate": 0.003700160188600421,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 359,
+      "node_index": 222,
+      "root_id": "720575940626447848",
+      "type": "LPLC2",
+      "side": "right",
+      "gate": 0.003699615364894271,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 360,
+      "node_index": 161,
+      "root_id": "720575940622174463",
+      "type": "LPLC2",
+      "side": "right",
+      "gate": 0.0036983201280236244,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 361,
+      "node_index": 3,
+      "root_id": "720575940605825666",
+      "type": "LPLC2",
+      "side": "right",
+      "gate": 0.003697754582390189,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 362,
+      "node_index": 14,
+      "root_id": "720575940610116757",
+      "type": "LPLC2",
+      "side": "right",
+      "gate": 0.003697754582390189,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 363,
+      "node_index": 13,
+      "root_id": "720575940609592674",
+      "type": "LPLC2",
+      "side": "right",
+      "gate": 0.003697754582390189,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 364,
+      "node_index": 259,
+      "root_id": "720575940628884496",
+      "type": "DNp03",
+      "side": "right",
+      "gate": 0.003697754582390189,
+      "is_input": false,
+      "is_output": true
+    },
+    {
+      "rank": 365,
+      "node_index": 215,
+      "root_id": "720575940626161930",
+      "type": "LPLC2",
+      "side": "right",
+      "gate": 0.003697754582390189,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 366,
+      "node_index": 182,
+      "root_id": "720575940624014524",
+      "type": "LPLC2",
+      "side": "right",
+      "gate": 0.003697754582390189,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 367,
+      "node_index": 170,
+      "root_id": "720575940622992205",
+      "type": "LPLC2",
+      "side": "right",
+      "gate": 0.003697754582390189,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 368,
+      "node_index": 107,
+      "root_id": "720575940618450496",
+      "type": "LPLC2",
+      "side": "right",
+      "gate": 0.003697754582390189,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 369,
+      "node_index": 229,
+      "root_id": "720575940626873000",
+      "type": "LPLC2",
+      "side": "right",
+      "gate": 0.003697754582390189,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 370,
+      "node_index": 197,
+      "root_id": "720575940624919077",
+      "type": "LPLC2",
+      "side": "right",
+      "gate": 0.003697754582390189,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 371,
+      "node_index": 325,
+      "root_id": "720575940636878682",
+      "type": "LPLC2",
+      "side": "right",
+      "gate": 0.003697754582390189,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 372,
+      "node_index": 5,
+      "root_id": "720575940606217138",
+      "type": "LPLC2",
+      "side": "right",
+      "gate": 0.003697754582390189,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 373,
+      "node_index": 183,
+      "root_id": "720575940624016778",
+      "type": "LPLC2",
+      "side": "right",
+      "gate": 0.00365636870265007,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 374,
+      "node_index": 209,
+      "root_id": "720575940625845447",
+      "type": "LC4",
+      "side": "right",
+      "gate": 0.003629604121670127,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 375,
+      "node_index": 208,
+      "root_id": "720575940625841351",
+      "type": "LC4",
+      "side": "right",
+      "gate": 0.0035596038214862347,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 376,
+      "node_index": 97,
+      "root_id": "720575940617997241",
+      "type": "LPLC2",
+      "side": "left",
+      "gate": 0.0033052845392376184,
+      "is_input": true,
+      "is_output": false
+    },
+    {
+      "rank": 377,
+      "node_index": 154,
+      "root_id": "720575940621726698",
+      "type": "PVLP100",
+      "side": "left",
+      "gate": 0.003219419391825795,
+      "is_input": false,
+      "is_output": false
+    }
+  ]
+}

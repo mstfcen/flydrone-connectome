@@ -66,3 +66,18 @@ The validated external-stack milestone uses the official `px4io/px4-sitl-gazebo`
 The `gz_x500_lidar_2d` model exposes a live Gazebo scan with 1080 beams, approximately 270° field of view and a 0.1–30 m range. Runtime insertion of the test wall is also validated.
 
 The closed-loop obstacle-avoidance integration is **not yet validated**. The current diagnostic found no automatic MAVLink `OBSTACLE_DISTANCE` bridge, and the experimental offboard wall trial timed out before reaching a valid avoidance trajectory. Those workflows are retained as diagnostics, not positive benchmark results.
+## Phase 5 — learned sparse connectome (v0.2)
+
+The v0.2 extension keeps the 377-node / 1,117-edge FlyWire-derived topology fixed while learning edge gains, node dynamics and node gates from `modified_fly` imitation data. Training uses 21,060 frames from 72 episodes, 6,068 validation frames from 24 episodes, 5% node dropout, 45 dense-imitation epochs and 110 sparsification epochs.
+
+On a 60-map selection set, the smallest tested mask matching the unpruned 83.3% success point estimate used 24 active neurons. Five matched random 24-node masks averaged 14.3% success.
+
+A separate 60-map confirmation set was then opened after `k=24` was fixed:
+
+| Policy | Success | Collision |
+|---|---:|---:|
+| Modified-fly teacher | 93.3% | 6.7% |
+| Learned 377-node | **85.0%** | 10.0% |
+| Fixed learned 24-node | 76.7% | 21.7% |
+
+The aggressive 24-node model therefore retained most but not all independent-set performance. Post-hoc characterization of the previously defined 48/40/32 masks yielded 83.3%, 86.7% and 85.0% success on the same confirmation maps, suggesting a more conservative sparse regime around 32–40 nodes. See `docs/LEARNED_SPARSE_REPORT.md` for the full protocol and interpretation.

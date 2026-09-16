@@ -4,3 +4,6 @@ data/fafb783/*.csv.gz
 *.pyc
 
 artifacts/
+# Learned-sparse experiment datasets are regenerated from deterministic rollouts.
+experiments/learned_sparse/train.npz
+experiments/learned_sparse/val.npz

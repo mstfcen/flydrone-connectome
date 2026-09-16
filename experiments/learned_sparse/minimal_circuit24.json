@@ -1,0 +1,523 @@
+{
+  "source": "FlyWire Codex FAFB v783",
+  "selection_rule": "top-24 learned gates; DNp03 protected",
+  "nodes": [
+    {
+      "id": "720575940614572742",
+      "type": "LC4",
+      "side": "left",
+      "is_input": true,
+      "is_output": false,
+      "node_index": 61,
+      "gate": 0.6667170524597168,
+      "protected": false
+    },
+    {
+      "id": "720575940615528678",
+      "type": "PVLP024",
+      "side": "right",
+      "is_input": false,
+      "is_output": false,
+      "node_index": 74,
+      "gate": 0.5804906487464905,
+      "protected": false
+    },
+    {
+      "id": "720575940615575007",
+      "type": "LC4",
+      "side": "left",
+      "is_input": true,
+      "is_output": false,
+      "node_index": 75,
+      "gate": 0.7414170503616333,
+      "protected": false
+    },
+    {
+      "id": "720575940617176321",
+      "type": "LC4",
+      "side": "left",
+      "is_input": true,
+      "is_output": false,
+      "node_index": 90,
+      "gate": 0.48246127367019653,
+      "protected": false
+    },
+    {
+      "id": "720575940619397542",
+      "type": "LC4",
+      "side": "left",
+      "is_input": true,
+      "is_output": false,
+      "node_index": 123,
+      "gate": 0.9089308977127075,
+      "protected": false
+    },
+    {
+      "id": "720575940620729816",
+      "type": "LPLC4",
+      "side": "left",
+      "is_input": false,
+      "is_output": false,
+      "node_index": 140,
+      "gate": 0.877670407295227,
+      "protected": false
+    },
+    {
+      "id": "720575940620813989",
+      "type": "LTe20",
+      "side": "left",
+      "is_input": false,
+      "is_output": false,
+      "node_index": 144,
+      "gate": 0.7306238412857056,
+      "protected": false
+    },
+    {
+      "id": "720575940623003653",
+      "type": "LPLC4",
+      "side": "left",
+      "is_input": false,
+      "is_output": false,
+      "node_index": 171,
+      "gate": 0.51943439245224,
+      "protected": false
+    },
+    {
+      "id": "720575940625697772",
+      "type": "LPLC2",
+      "side": "left",
+      "is_input": true,
+      "is_output": false,
+      "node_index": 205,
+      "gate": 0.5718681216239929,
+      "protected": false
+    },
+    {
+      "id": "720575940626375172",
+      "type": "LPLC2",
+      "side": "left",
+      "is_input": true,
+      "is_output": false,
+      "node_index": 217,
+      "gate": 0.7375131249427795,
+      "protected": false
+    },
+    {
+      "id": "720575940626886568",
+      "type": "LPLC4",
+      "side": "left",
+      "is_input": false,
+      "is_output": false,
+      "node_index": 230,
+      "gate": 0.47303542494773865,
+      "protected": false
+    },
+    {
+      "id": "720575940626916936",
+      "type": "LC4",
+      "side": "left",
+      "is_input": true,
+      "is_output": false,
+      "node_index": 231,
+      "gate": 0.9992179870605469,
+      "protected": false
+    },
+    {
+      "id": "720575940627645514",
+      "type": "DNp03",
+      "side": "left",
+      "is_input": false,
+      "is_output": true,
+      "node_index": 237,
+      "gate": 1.0,
+      "protected": true
+    },
+    {
+      "id": "720575940628462340",
+      "type": "LC4",
+      "side": "left",
+      "is_input": true,
+      "is_output": false,
+      "node_index": 248,
+      "gate": 0.847618818283081,
+      "protected": false
+    },
+    {
+      "id": "720575940629368015",
+      "type": "LPLC2",
+      "side": "left",
+      "is_input": true,
+      "is_output": false,
+      "node_index": 266,
+      "gate": 0.4523538053035736,
+      "protected": false
+    },
+    {
+      "id": "720575940630998339",
+      "type": "LC4",
+      "side": "left",
+      "is_input": true,
+      "is_output": false,
+      "node_index": 280,
+      "gate": 0.6003807187080383,
+      "protected": false
+    },
+    {
+      "id": "720575940634223514",
+      "type": "LPLC4",
+      "side": "left",
+      "is_input": false,
+      "is_output": false,
+      "node_index": 308,
+      "gate": 0.5472754240036011,
+      "protected": false
+    },
+    {
+      "id": "720575940638456227",
+      "type": "LC4",
+      "side": "left",
+      "is_input": true,
+      "is_output": false,
+      "node_index": 332,
+      "gate": 0.6101800799369812,
+      "protected": false
+    },
+    {
+      "id": "720575940640172221",
+      "type": "CL323a",
+      "side": "left",
+      "is_input": false,
+      "is_output": false,
+      "node_index": 345,
+      "gate": 0.5981770157814026,
+      "protected": false
+    },
+    {
+      "id": "720575940640302389",
+      "type": "LPLC2",
+      "side": "left",
+      "is_input": true,
+      "is_output": false,
+      "node_index": 346,
+      "gate": 0.5980595946311951,
+      "protected": false
+    },
+    {
+      "id": "720575940640612480",
+      "type": "LC4",
+      "side": "left",
+      "is_input": true,
+      "is_output": false,
+      "node_index": 349,
+      "gate": 0.8132306933403015,
+      "protected": false
+    },
+    {
+      "id": "720575940641216976",
+      "type": "LPLC4",
+      "side": "left",
+      "is_input": false,
+      "is_output": false,
+      "node_index": 353,
+      "gate": 0.895269513130188,
+      "protected": false
+    },
+    {
+      "id": "720575940646414132",
+      "type": "LPLC4",
+      "side": "left",
+      "is_input": false,
+      "is_output": false,
+      "node_index": 366,
+      "gate": 0.4659428596496582,
+      "protected": false
+    },
+    {
+      "id": "720575940649229433",
+      "type": "LC4",
+      "side": "left",
+      "is_input": true,
+      "is_output": false,
+      "node_index": 371,
+      "gate": 0.9952373504638672,
+      "protected": false
+    }
+  ],
+  "edges": [
+    {
+      "pre": 61,
+      "post": 237,
+      "pre_id": "720575940614572742",
+      "post_id": "720575940627645514",
+      "syn_count": 18,
+      "nt": "ACH",
+      "neuropil": "PVLP_L",
+      "sign": 1.0,
+      "base_weight": 0.014717906786590351
+    },
+    {
+      "pre": 74,
+      "post": 237,
+      "pre_id": "720575940615528678",
+      "post_id": "720575940627645514",
+      "syn_count": 16,
+      "nt": "GABA",
+      "neuropil": "PVLP_L",
+      "sign": -1.0,
+      "base_weight": -0.013082583810302535
+    },
+    {
+      "pre": 75,
+      "post": 237,
+      "pre_id": "720575940615575007",
+      "post_id": "720575940627645514",
+      "syn_count": 13,
+      "nt": "ACH",
+      "neuropil": "PVLP_L",
+      "sign": 1.0,
+      "base_weight": 0.01062959934587081
+    },
+    {
+      "pre": 90,
+      "post": 237,
+      "pre_id": "720575940617176321",
+      "post_id": "720575940627645514",
+      "syn_count": 12,
+      "nt": "ACH",
+      "neuropil": "PVLP_L",
+      "sign": 1.0,
+      "base_weight": 0.009811937857726901
+    },
+    {
+      "pre": 123,
+      "post": 237,
+      "pre_id": "720575940619397542",
+      "post_id": "720575940627645514",
+      "syn_count": 6,
+      "nt": "ACH",
+      "neuropil": "PVLP_L",
+      "sign": 1.0,
+      "base_weight": 0.004905968928863451
+    },
+    {
+      "pre": 140,
+      "post": 237,
+      "pre_id": "720575940620729816",
+      "post_id": "720575940627645514",
+      "syn_count": 23,
+      "nt": "ACH",
+      "neuropil": "PLP_L",
+      "sign": 1.0,
+      "base_weight": 0.018806214227309895
+    },
+    {
+      "pre": 144,
+      "post": 237,
+      "pre_id": "720575940620813989",
+      "post_id": "720575940627645514",
+      "syn_count": 23,
+      "nt": "ACH",
+      "neuropil": "PLP_L",
+      "sign": 1.0,
+      "base_weight": 0.018806214227309895
+    },
+    {
+      "pre": 171,
+      "post": 237,
+      "pre_id": "720575940623003653",
+      "post_id": "720575940627645514",
+      "syn_count": 14,
+      "nt": "ACH",
+      "neuropil": "PLP_L",
+      "sign": 1.0,
+      "base_weight": 0.011447260834014717
+    },
+    {
+      "pre": 205,
+      "post": 231,
+      "pre_id": "720575940625697772",
+      "post_id": "720575940626916936",
+      "syn_count": 7,
+      "nt": "ACH",
+      "neuropil": "LO_L",
+      "sign": 1.0,
+      "base_weight": 1.0
+    },
+    {
+      "pre": 217,
+      "post": 140,
+      "pre_id": "720575940626375172",
+      "post_id": "720575940620729816",
+      "syn_count": 8,
+      "nt": "ACH",
+      "neuropil": "LO_L",
+      "sign": 1.0,
+      "base_weight": 0.6153846153846154
+    },
+    {
+      "pre": 217,
+      "post": 353,
+      "pre_id": "720575940626375172",
+      "post_id": "720575940641216976",
+      "syn_count": 5,
+      "nt": "ACH",
+      "neuropil": "LOP_L",
+      "sign": 1.0,
+      "base_weight": 0.17857142857142858
+    },
+    {
+      "pre": 230,
+      "post": 237,
+      "pre_id": "720575940626886568",
+      "post_id": "720575940627645514",
+      "syn_count": 21,
+      "nt": "ACH",
+      "neuropil": "PLP_L",
+      "sign": 1.0,
+      "base_weight": 0.017170891251022075
+    },
+    {
+      "pre": 231,
+      "post": 237,
+      "pre_id": "720575940626916936",
+      "post_id": "720575940627645514",
+      "syn_count": 5,
+      "nt": "ACH",
+      "neuropil": "PVLP_L",
+      "sign": 1.0,
+      "base_weight": 0.004088307440719542
+    },
+    {
+      "pre": 248,
+      "post": 237,
+      "pre_id": "720575940628462340",
+      "post_id": "720575940627645514",
+      "syn_count": 11,
+      "nt": "ACH",
+      "neuropil": "PVLP_L",
+      "sign": 1.0,
+      "base_weight": 0.008994276369582993
+    },
+    {
+      "pre": 266,
+      "post": 230,
+      "pre_id": "720575940629368015",
+      "post_id": "720575940626886568",
+      "syn_count": 5,
+      "nt": "ACH",
+      "neuropil": "LO_L",
+      "sign": 1.0,
+      "base_weight": 1.0
+    },
+    {
+      "pre": 280,
+      "post": 237,
+      "pre_id": "720575940630998339",
+      "post_id": "720575940627645514",
+      "syn_count": 5,
+      "nt": "ACH",
+      "neuropil": "PVLP_L",
+      "sign": 1.0,
+      "base_weight": 0.004088307440719542
+    },
+    {
+      "pre": 280,
+      "post": 345,
+      "pre_id": "720575940630998339",
+      "post_id": "720575940640172221",
+      "syn_count": 5,
+      "nt": "ACH",
+      "neuropil": "PVLP_L",
+      "sign": 1.0,
+      "base_weight": 0.5
+    },
+    {
+      "pre": 308,
+      "post": 237,
+      "pre_id": "720575940634223514",
+      "post_id": "720575940627645514",
+      "syn_count": 20,
+      "nt": "ACH",
+      "neuropil": "PLP_L",
+      "sign": 1.0,
+      "base_weight": 0.016353229762878167
+    },
+    {
+      "pre": 332,
+      "post": 237,
+      "pre_id": "720575940638456227",
+      "post_id": "720575940627645514",
+      "syn_count": 8,
+      "nt": "ACH",
+      "neuropil": "PVLP_L",
+      "sign": 1.0,
+      "base_weight": 0.006541291905151268
+    },
+    {
+      "pre": 345,
+      "post": 237,
+      "pre_id": "720575940640172221",
+      "post_id": "720575940627645514",
+      "syn_count": 21,
+      "nt": "ACH",
+      "neuropil": "PLP_L",
+      "sign": 1.0,
+      "base_weight": 0.017170891251022075
+    },
+    {
+      "pre": 346,
+      "post": 308,
+      "pre_id": "720575940640302389",
+      "post_id": "720575940634223514",
+      "syn_count": 9,
+      "nt": "ACH",
+      "neuropil": "LOP_L",
+      "sign": 1.0,
+      "base_weight": 1.0
+    },
+    {
+      "pre": 349,
+      "post": 237,
+      "pre_id": "720575940640612480",
+      "post_id": "720575940627645514",
+      "syn_count": 9,
+      "nt": "ACH",
+      "neuropil": "PVLP_L",
+      "sign": 1.0,
+      "base_weight": 0.007358953393295176
+    },
+    {
+      "pre": 353,
+      "post": 237,
+      "pre_id": "720575940641216976",
+      "post_id": "720575940627645514",
+      "syn_count": 18,
+      "nt": "ACH",
+      "neuropil": "PLP_L",
+      "sign": 1.0,
+      "base_weight": 0.014717906786590351
+    },
+    {
+      "pre": 366,
+      "post": 237,
+      "pre_id": "720575940646414132",
+      "post_id": "720575940627645514",
+      "syn_count": 21,
+      "nt": "ACH",
+      "neuropil": "PLP_L",
+      "sign": 1.0,
+      "base_weight": 0.017170891251022075
+    },
+    {
+      "pre": 371,
+      "post": 237,
+      "pre_id": "720575940649229433",
+      "post_id": "720575940627645514",
+      "syn_count": 8,
+      "nt": "ACH",
+      "neuropil": "PVLP_L",
+      "sign": 1.0,
+      "base_weight": 0.006541291905151268
+    }
+  ]
+}

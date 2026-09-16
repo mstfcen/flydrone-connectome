@@ -1,0 +1,460 @@
+{
+  "experiment": "learned sparse connectome",
+  "selection_rule": "smallest tested k matching unpruned selection-set success point estimate",
+  "selection_set": [
+    25000,
+    25059
+  ],
+  "random_set": [
+    27000,
+    27059
+  ],
+  "ablation_set": [
+    26000,
+    26015
+  ],
+  "confirmatory_set": [
+    28000,
+    28059
+  ],
+  "selected_k": 24,
+  "original_nodes": 377,
+  "original_edges": 1117,
+  "compression_ratio": 15.708333333333334,
+  "selection_curve": [
+    {
+      "k": 377,
+      "success_rate": 0.8333333333,
+      "collision_rate": 0.15
+    },
+    {
+      "k": 192,
+      "success_rate": 0.8333333333,
+      "collision_rate": 0.15
+    },
+    {
+      "k": 128,
+      "success_rate": 0.8333333333,
+      "collision_rate": 0.15
+    },
+    {
+      "k": 96,
+      "success_rate": 0.8333333333,
+      "collision_rate": 0.15
+    },
+    {
+      "k": 64,
+      "success_rate": 0.8333333333,
+      "collision_rate": 0.15
+    },
+    {
+      "k": 48,
+      "success_rate": 0.85,
+      "collision_rate": 0.1333333333
+    },
+    {
+      "k": 40,
+      "success_rate": 0.8666666667,
+      "collision_rate": 0.0833333333
+    },
+    {
+      "k": 32,
+      "success_rate": 0.85,
+      "collision_rate": 0.15
+    },
+    {
+      "k": 24,
+      "success_rate": 0.8333333333,
+      "collision_rate": 0.1666666667
+    },
+    {
+      "k": 20,
+      "success_rate": 0.7,
+      "collision_rate": 0.2666666667
+    },
+    {
+      "k": 16,
+      "success_rate": 0.7166666667,
+      "collision_rate": 0.25
+    },
+    {
+      "k": 12,
+      "success_rate": 0.75,
+      "collision_rate": 0.1833333333
+    },
+    {
+      "k": 8,
+      "success_rate": 0.1166666667,
+      "collision_rate": 0.8666666667
+    }
+  ],
+  "random_24": [
+    {
+      "rep": 0,
+      "k": 24,
+      "success_rate": 0.3333333333,
+      "collision_rate": 0.65,
+      "n": 60
+    },
+    {
+      "rep": 1,
+      "k": 24,
+      "success_rate": 0.1833333333,
+      "collision_rate": 0.8166666667,
+      "n": 60
+    },
+    {
+      "rep": 2,
+      "k": 24,
+      "success_rate": 0.0666666667,
+      "collision_rate": 0.9333333333,
+      "n": 60
+    },
+    {
+      "rep": 3,
+      "k": 24,
+      "success_rate": 0.0666666667,
+      "collision_rate": 0.9333333333,
+      "n": 60
+    },
+    {
+      "rep": 4,
+      "k": 24,
+      "success_rate": 0.0666666667,
+      "collision_rate": 0.9333333333,
+      "n": 60
+    }
+  ],
+  "ablation": [
+    {
+      "node_index": "123",
+      "root_id": "720575940619397542",
+      "type": "LC4",
+      "side": "left",
+      "gate": "0.9089308977127075",
+      "protected": "False",
+      "base_success_rate": "0.75",
+      "ablated_success_rate": "0.5",
+      "success_drop": "0.25"
+    },
+    {
+      "node_index": "75",
+      "root_id": "720575940615575007",
+      "type": "LC4",
+      "side": "left",
+      "gate": "0.7414170503616333",
+      "protected": "False",
+      "base_success_rate": "0.75",
+      "ablated_success_rate": "0.5",
+      "success_drop": "0.25"
+    },
+    {
+      "node_index": "90",
+      "root_id": "720575940617176321",
+      "type": "LC4",
+      "side": "left",
+      "gate": "0.48246127367019653",
+      "protected": "False",
+      "base_success_rate": "0.75",
+      "ablated_success_rate": "0.5",
+      "success_drop": "0.25"
+    },
+    {
+      "node_index": "140",
+      "root_id": "720575940620729816",
+      "type": "LPLC4",
+      "side": "left",
+      "gate": "0.877670407295227",
+      "protected": "False",
+      "base_success_rate": "0.75",
+      "ablated_success_rate": "0.625",
+      "success_drop": "0.125"
+    },
+    {
+      "node_index": "61",
+      "root_id": "720575940614572742",
+      "type": "LC4",
+      "side": "left",
+      "gate": "0.6667170524597168",
+      "protected": "False",
+      "base_success_rate": "0.75",
+      "ablated_success_rate": "0.625",
+      "success_drop": "0.125"
+    },
+    {
+      "node_index": "280",
+      "root_id": "720575940630998339",
+      "type": "LC4",
+      "side": "left",
+      "gate": "0.6003807187080383",
+      "protected": "False",
+      "base_success_rate": "0.75",
+      "ablated_success_rate": "0.625",
+      "success_drop": "0.125"
+    },
+    {
+      "node_index": "349",
+      "root_id": "720575940640612480",
+      "type": "LC4",
+      "side": "left",
+      "gate": "0.8132306933403015",
+      "protected": "False",
+      "base_success_rate": "0.75",
+      "ablated_success_rate": "0.6875",
+      "success_drop": "0.0625"
+    },
+    {
+      "node_index": "217",
+      "root_id": "720575940626375172",
+      "type": "LPLC2",
+      "side": "left",
+      "gate": "0.7375131249427795",
+      "protected": "False",
+      "base_success_rate": "0.75",
+      "ablated_success_rate": "0.6875",
+      "success_drop": "0.0625"
+    },
+    {
+      "node_index": "332",
+      "root_id": "720575940638456227",
+      "type": "LC4",
+      "side": "left",
+      "gate": "0.6101800799369812",
+      "protected": "False",
+      "base_success_rate": "0.75",
+      "ablated_success_rate": "0.6875",
+      "success_drop": "0.0625"
+    },
+    {
+      "node_index": "345",
+      "root_id": "720575940640172221",
+      "type": "CL323a",
+      "side": "left",
+      "gate": "0.5981770157814026",
+      "protected": "False",
+      "base_success_rate": "0.75",
+      "ablated_success_rate": "0.6875",
+      "success_drop": "0.0625"
+    },
+    {
+      "node_index": "346",
+      "root_id": "720575940640302389",
+      "type": "LPLC2",
+      "side": "left",
+      "gate": "0.5980595946311951",
+      "protected": "False",
+      "base_success_rate": "0.75",
+      "ablated_success_rate": "0.6875",
+      "success_drop": "0.0625"
+    },
+    {
+      "node_index": "308",
+      "root_id": "720575940634223514",
+      "type": "LPLC4",
+      "side": "left",
+      "gate": "0.5472754240036011",
+      "protected": "False",
+      "base_success_rate": "0.75",
+      "ablated_success_rate": "0.6875",
+      "success_drop": "0.0625"
+    },
+    {
+      "node_index": "230",
+      "root_id": "720575940626886568",
+      "type": "LPLC4",
+      "side": "left",
+      "gate": "0.47303542494773865",
+      "protected": "False",
+      "base_success_rate": "0.75",
+      "ablated_success_rate": "0.6875",
+      "success_drop": "0.0625"
+    },
+    {
+      "node_index": "266",
+      "root_id": "720575940629368015",
+      "type": "LPLC2",
+      "side": "left",
+      "gate": "0.4523538053035736",
+      "protected": "False",
+      "base_success_rate": "0.75",
+      "ablated_success_rate": "0.6875",
+      "success_drop": "0.0625"
+    },
+    {
+      "node_index": "231",
+      "root_id": "720575940626916936",
+      "type": "LC4",
+      "side": "left",
+      "gate": "0.9992179870605469",
+      "protected": "False",
+      "base_success_rate": "0.75",
+      "ablated_success_rate": "0.75",
+      "success_drop": "0.0"
+    },
+    {
+      "node_index": "371",
+      "root_id": "720575940649229433",
+      "type": "LC4",
+      "side": "left",
+      "gate": "0.9952373504638672",
+      "protected": "False",
+      "base_success_rate": "0.75",
+      "ablated_success_rate": "0.75",
+      "success_drop": "0.0"
+    },
+    {
+      "node_index": "353",
+      "root_id": "720575940641216976",
+      "type": "LPLC4",
+      "side": "left",
+      "gate": "0.895269513130188",
+      "protected": "False",
+      "base_success_rate": "0.75",
+      "ablated_success_rate": "0.75",
+      "success_drop": "0.0"
+    },
+    {
+      "node_index": "248",
+      "root_id": "720575940628462340",
+      "type": "LC4",
+      "side": "left",
+      "gate": "0.847618818283081",
+      "protected": "False",
+      "base_success_rate": "0.75",
+      "ablated_success_rate": "0.75",
+      "success_drop": "0.0"
+    },
+    {
+      "node_index": "144",
+      "root_id": "720575940620813989",
+      "type": "LTe20",
+      "side": "left",
+      "gate": "0.7306238412857056",
+      "protected": "False",
+      "base_success_rate": "0.75",
+      "ablated_success_rate": "0.75",
+      "success_drop": "0.0"
+    },
+    {
+      "node_index": "74",
+      "root_id": "720575940615528678",
+      "type": "PVLP024",
+      "side": "right",
+      "gate": "0.5804906487464905",
+      "protected": "False",
+      "base_success_rate": "0.75",
+      "ablated_success_rate": "0.75",
+      "success_drop": "0.0"
+    },
+    {
+      "node_index": "205",
+      "root_id": "720575940625697772",
+      "type": "LPLC2",
+      "side": "left",
+      "gate": "0.5718681216239929",
+      "protected": "False",
+      "base_success_rate": "0.75",
+      "ablated_success_rate": "0.75",
+      "success_drop": "0.0"
+    },
+    {
+      "node_index": "171",
+      "root_id": "720575940623003653",
+      "type": "LPLC4",
+      "side": "left",
+      "gate": "0.51943439245224",
+      "protected": "False",
+      "base_success_rate": "0.75",
+      "ablated_success_rate": "0.75",
+      "success_drop": "0.0"
+    },
+    {
+      "node_index": "366",
+      "root_id": "720575940646414132",
+      "type": "LPLC4",
+      "side": "left",
+      "gate": "0.4659428596496582",
+      "protected": "False",
+      "base_success_rate": "0.75",
+      "ablated_success_rate": "0.75",
+      "success_drop": "0.0"
+    },
+    {
+      "node_index": "237",
+      "root_id": "720575940627645514",
+      "type": "DNp03",
+      "side": "left",
+      "gate": "1.0",
+      "protected": "True",
+      "base_success_rate": "0.75",
+      "ablated_success_rate": "",
+      "success_drop": ""
+    }
+  ],
+  "confirmatory": {
+    "protocol": "confirmatory after fixing k=24",
+    "seed_range": [
+      28000,
+      28059
+    ],
+    "teacher": {
+      "success_rate": 0.9333333333333333,
+      "collision_rate": 0.06666666666666667,
+      "mean_steps": 333.9166666666667,
+      "mean_progress": 0.9565535587905892,
+      "mean_min_clearance_m": 0.7571813289356076,
+      "success_ci95": [
+        0.8407464268680283,
+        0.9737713012754938
+      ],
+      "n": 60
+    },
+    "unpruned_377": {
+      "success_rate": 0.85,
+      "collision_rate": 0.1,
+      "mean_steps": 292.15,
+      "mean_progress": 0.9321465618757444,
+      "mean_min_clearance_m": 1.180676778857775,
+      "success_ci95": [
+        0.7388541093022145,
+        0.9190255941983225
+      ],
+      "n": 60
+    },
+    "fixed_24": {
+      "success_rate": 0.7666666666666667,
+      "collision_rate": 0.21666666666666667,
+      "mean_steps": 236.53333333333333,
+      "mean_progress": 0.860960266816776,
+      "mean_min_clearance_m": 0.8135555119364883,
+      "success_ci95": [
+        0.6456372962239805,
+        0.8556043826335717
+      ],
+      "n": 60
+    }
+  },
+  "confirmatory_posthoc": {
+    "48": {
+      "success_rate": 0.8333333333333334,
+      "collision_rate": 0.11666666666666667,
+      "mean_steps": 287.31666666666666,
+      "mean_progress": 0.9352566360648926,
+      "mean_min_clearance_m": 1.1750134411766038
+    },
+    "40": {
+      "success_rate": 0.8666666666666667,
+      "collision_rate": 0.1,
+      "mean_steps": 285.6,
+      "mean_progress": 0.9330247316695917,
+      "mean_min_clearance_m": 1.1137379076000467
+    },
+    "32": {
+      "success_rate": 0.85,
+      "collision_rate": 0.15,
+      "mean_steps": 252.98333333333332,
+      "mean_progress": 0.9223592492242534,
+      "mean_min_clearance_m": 1.0051973911279053
+    }
+  }
+}

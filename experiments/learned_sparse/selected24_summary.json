@@ -1,0 +1,153 @@
+{
+  "experiment": "learned sparse connectome",
+  "heldout_dense_maps": 60,
+  "selection_rule": "smallest tested k matching unpruned success point estimate",
+  "original_nodes": 377,
+  "original_edges": 1117,
+  "selected_nodes": 24,
+  "compression_ratio": 15.708333333333334,
+  "teacher": {
+    "success_rate": 0.9,
+    "collision_rate": 0.0833333333,
+    "n": 60
+  },
+  "unpruned_learned": {
+    "success_rate": 0.8333333333,
+    "collision_rate": 0.15,
+    "n": 60
+  },
+  "learned_24": {
+    "success_rate": 0.8333333333,
+    "collision_rate": 0.1666666667,
+    "n": 60
+  },
+  "random_24": {
+    "masks": 5,
+    "episodes_per_mask": 60,
+    "mean_success_rate": 0.14333333333999998,
+    "std_success_rate": 0.105198225557912,
+    "min_success_rate": 0.0666666667,
+    "max_success_rate": 0.3333333333
+  },
+  "ablation_maps": 16,
+  "ablation_base_success_rate": 0.75,
+  "critical_nonprotected_nodes": [
+    {
+      "node_index": 123,
+      "root_id": "720575940619397542",
+      "type": "LC4",
+      "side": "left",
+      "gate": 0.9089308977127075,
+      "protected": false,
+      "base_success_rate": 0.75,
+      "ablated_success_rate": 0.5,
+      "success_drop": 0.25
+    },
+    {
+      "node_index": 75,
+      "root_id": "720575940615575007",
+      "type": "LC4",
+      "side": "left",
+      "gate": 0.7414170503616333,
+      "protected": false,
+      "base_success_rate": 0.75,
+      "ablated_success_rate": 0.5,
+      "success_drop": 0.25
+    },
+    {
+      "node_index": 90,
+      "root_id": "720575940617176321",
+      "type": "LC4",
+      "side": "left",
+      "gate": 0.48246127367019653,
+      "protected": false,
+      "base_success_rate": 0.75,
+      "ablated_success_rate": 0.5,
+      "success_drop": 0.25
+    },
+    {
+      "node_index": 140,
+      "root_id": "720575940620729816",
+      "type": "LPLC4",
+      "side": "left",
+      "gate": 0.877670407295227,
+      "protected": false,
+      "base_success_rate": 0.75,
+      "ablated_success_rate": 0.625,
+      "success_drop": 0.125
+    },
+    {
+      "node_index": 61,
+      "root_id": "720575940614572742",
+      "type": "LC4",
+      "side": "left",
+      "gate": 0.6667170524597168,
+      "protected": false,
+      "base_success_rate": 0.75,
+      "ablated_success_rate": 0.625,
+      "success_drop": 0.125
+    },
+    {
+      "node_index": 280,
+      "root_id": "720575940630998339",
+      "type": "LC4",
+      "side": "left",
+      "gate": 0.6003807187080383,
+      "protected": false,
+      "base_success_rate": 0.75,
+      "ablated_success_rate": 0.625,
+      "success_drop": 0.125
+    },
+    {
+      "node_index": 349,
+      "root_id": "720575940640612480",
+      "type": "LC4",
+      "side": "left",
+      "gate": 0.8132306933403015,
+      "protected": false,
+      "base_success_rate": 0.75,
+      "ablated_success_rate": 0.6875,
+      "success_drop": 0.0625
+    },
+    {
+      "node_index": 217,
+      "root_id": "720575940626375172",
+      "type": "LPLC2",
+      "side": "left",
+      "gate": 0.7375131249427795,
+      "protected": false,
+      "base_success_rate": 0.75,
+      "ablated_success_rate": 0.6875,
+      "success_drop": 0.0625
+    },
+    {
+      "node_index": 332,
+      "root_id": "720575940638456227",
+      "type": "LC4",
+      "side": "left",
+      "gate": 0.6101800799369812,
+      "protected": false,
+      "base_success_rate": 0.75,
+      "ablated_success_rate": 0.6875,
+      "success_drop": 0.0625
+    },
+    {
+      "node_index": 345,
+      "root_id": "720575940640172221",
+      "type": "CL323a",
+      "side": "left",
+      "gate": 0.5981770157814026,
+      "protected": false,
+      "base_success_rate": 0.75,
+      "ablated_success_rate": 0.6875,
+      "success_drop": 0.0625
+    }
+  ],
+  "training_final_validation": {
+    "weighted_loss": 0.0413038181478677,
+    "speed_rmse_norm": 0.13702455313633954,
+    "omega_rmse_norm": 0.15798337844385943
+  },
+  "training_gate_mean": 0.07403869181871414,
+  "training_gate_median": 0.00457430724054575
+}

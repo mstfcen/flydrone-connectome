@@ -1,0 +1,22 @@
+{
+  "teacher": "modified_fly",
+  "teacher_params": {
+    "goal_gain": 0.8689334409263146,
+    "avoid_gain": 2.8319769602472613,
+    "ttc_gain": 0.9948274565418566,
+    "prox_gain": 0.882122706866736,
+    "brake_gain": 0.5566211196624757,
+    "memory": 0.7380503461915419
+  },
+  "train_seeds": [
+    20000,
+    20071
+  ],
+  "validation_seeds": [
+    22000,
+    22023
+  ],
+  "train_samples": 21060,
+  "validation_samples": 6068,
+  "input": "31-ray TTC/proximity retinal threat + goal error"
+}

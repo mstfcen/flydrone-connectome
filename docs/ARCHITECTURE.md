@@ -53,3 +53,12 @@ The VFH-style controller scores candidate directions using goal alignment, sense
 4. **PX4/Gazebo SITL** — external flight stack and simulator boundary using the official PX4 Gazebo image.
 
 The staged design is intentional: each layer introduces a new source of failure without changing the research question.
+## Learned sparse extension
+
+The v0.2 experiment adds a trainable controller whose **edge set remains fixed** to the extracted 377-node graph. Learnable parameters include edge gains, node leak/dynamics values, differentiable node gates and a small output layer.
+
+The controller maps the 31-ray TTC/proximity representation onto LC4/LPLC2 input nodes, propagates activity through the fixed graph, and reads the well-connected left DNp03 as a threat output. The same parameters are evaluated a second time on mirrored sensory input to form a bilateral engineering signal.
+
+Training proceeds in two stages: dense teacher imitation followed by increasing sparsity pressure with 5% node dropout. Hard top-k masks are then evaluated closed-loop rather than inferring utility from soft gate values alone.
+
+This learned path is intentionally separate from the raw and bilateral hand-parameterized FlyWire policies; its results should be interpreted as task-conditioned compression of a connectome-derived prior.
