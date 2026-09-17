@@ -142,3 +142,8 @@ docs/                     architecture, experiments and limitations
 - [PX4/Gazebo integration status](phase4/README.md)
 
 FlyDrone is intentionally scoped as a compact research prototype. The staged simulation/connectome study and the v0.2 sparsification extension are now frozen as reported baselines. Closed-loop PX4/Gazebo avoidance and real-vehicle testing are explicitly future work rather than claims of this release.
+## License and citation
+
+Released under the [MIT License](LICENSE).
+
+Citation metadata is provided in [`CITATION.cff`](CITATION.cff); GitHub can render this through **Cite this repository**.
